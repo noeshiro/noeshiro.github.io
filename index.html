@@ -1,1 +1,56 @@
-<h1>Hello, noeshiro.com!</h1>
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>noeshiro — Portfolio & Blog</title>
+  <meta name="description" content="noeshiroのポートフォリオとブログ。制作・学び・記録。">
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <header class="nav">
+    <a class="brand" href="/">noeshiro</a>
+    <nav class="links">
+      <a href="/#works">作品</a>
+      <a href="/blog/">ブログ</a>
+      <a href="/#contact">連絡先</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h1>こんにちは、noeshiroです。</h1>
+      <p>ポートフォリオとブログのサイトです。DTM・デザイン・開発の学びを記録します。</p>
+      <p><a class="btn" href="/blog/">最新のブログを見る</a></p>
+    </section>
+
+    <section id="works">
+      <h2>制作物（ピックアップ）</h2>
+      <div class="grid">
+        <article class="card">
+          <small>2025/08</small>
+          <h3>作品タイトルA</h3>
+          <p>1〜2行の説明。リンクや画像を配置できます。</p>
+          <p><a class="btn" href="https://example.com" target="_blank" rel="noreferrer">見る</a></p>
+        </article>
+        <article class="card">
+          <small>2025/07</small>
+          <h3>作品タイトルB</h3>
+          <p>説明テキスト。後で自由に差し替えてください。</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>連絡先</h2>
+      <p>ご連絡は <a href="mailto:you@example.com">you@example.com</a> まで。</p>
+      <!-- アフィタグはここや各記事の好きな位置に貼ればOK -->
+    </section>
+  </main>
+
+  <footer class="footer">© <span id="y"></span> noeshiro</footer>
+  <script>document.getElementById("y").textContent = new Date().getFullYear();</script>
+</body>
+</html>
+
