@@ -3,54 +3,115 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>noeshiro — Portfolio & Blog</title>
-  <meta name="description" content="noeshiroのポートフォリオとブログ">
+  <title>noeshiro — portfolio / blog</title>
+  <meta name="description" content="noeshiroの制作と記録。DTM / design / web。">
   <link rel="icon" href="/favicon.ico" />
+  <link rel="canonical" href="https://www.noeshiro.com/">
   <link rel="stylesheet" href="/style.css" />
+  <script defer src="/script.js"></script>
+  <meta property="og:image" content="https://www.noeshiro.com/images/og.jpg">
 </head>
-<body>
-  <header class="nav">
-    <a class="brand" href="/">noeshiro</a>
-    <nav class="links">
-      <a href="/#works">作品</a>
-      <a href="/blog/">ブログ</a>
-      <a href="/#contact">連絡先</a>
+<body class="layout">
+  <!-- 左サイド / 固定ナビ -->
+  <aside class="side">
+    <a class="logo" href="/">noeshiro</a>
+    <nav class="side-nav">
+      <a href="/#works">works</a>
+      <a href="/blog/">blog</a>
+      <a href="/#about">about</a>
+      <a href="/#contact">contact</a>
     </nav>
-  </header>
+    <button id="themeBtn" class="theme-btn" aria-label="theme">○</button>
+  </aside>
 
-  <main class="container">
+  <!-- 右カラム / 本文 -->
+  <main class="main">
     <section class="hero">
-      <h1>こんにちは、noeshiroです。</h1>
-      <p>ポートフォリオとブログのサイトです。DTM・デザイン・開発の学びを記録します。</p>
-      <p><a class="btn" href="/blog/">最新のブログを見る</a></p>
+      <h1>
+        制作と学びを<br>
+        ていねいに記録する。
+      </h1>
+      <p class="lead">
+        DTM / Design / Web。作品のアーカイブとブログを更新しています。
+      </p>
     </section>
 
-    <section id="works">
-      <h2>制作物（ピックアップ）</h2>
-      <div class="grid">
-        <article class="card">
-          <small>2025/08</small>
-          <h3>作品タイトルA</h3>
-          <p>1〜2行の説明。リンクや画像を配置できます。</p>
-          <p><a class="btn" href="https://example.com" target="_blank" rel="noreferrer">見る</a></p>
+    <section id="works" class="section">
+      <div class="sec-head">
+        <h2>works</h2>
+        <a class="more" href="#contact">commission →</a>
+      </div>
+
+      <!-- 縦長サムネ重視のグリッド -->
+      <div class="grid works">
+        <article class="tile">
+          <a class="thumb" href="https://example.com" target="_blank" rel="noreferrer">
+            <img src="/images/work-a.jpg" alt="作品A">
+          </a>
+          <div class="meta">
+            <span class="date">2025/08</span>
+            <h3>作品タイトルA</h3>
+            <p>1〜2行の説明。YouTube / MV / Web など。</p>
+          </div>
         </article>
-        <article class="card">
-          <small>2025/07</small>
-          <h3>作品タイトルB</h3>
-          <p>説明テキスト。後で自由に差し替えてください。</p>
+
+        <article class="tile">
+          <a class="thumb" href="#" aria-label="作品B">
+            <img src="/images/work-b.jpg" alt="作品B">
+          </a>
+          <div class="meta">
+            <span class="date">2025/07</span>
+            <h3>作品タイトルB</h3>
+            <p>説明テキスト。スクショは /images に配置。</p>
+          </div>
+        </article>
+
+        <article class="tile">
+          <a class="thumb" href="#" aria-label="作品C">
+            <img src="/images/work-c.jpg" alt="作品C">
+          </a>
+          <div class="meta">
+            <span class="date">2025/06</span>
+            <h3>作品タイトルC</h3>
+            <p>説明テキスト。後で差し替え。</p>
+          </div>
         </article>
       </div>
     </section>
 
-    <section id="contact">
-      <h2>連絡先</h2>
-      <p>ご連絡は <a href="mailto:you@example.com">you@example.com</a> まで。</p>
-      <!-- アフィタグはここや各記事の好きな位置に貼ればOK -->
+    <section class="section">
+      <div class="sec-head">
+        <h2>blog</h2>
+        <a class="more" href="/blog/">all posts →</a>
+      </div>
+      <ul class="postlist">
+        <li>
+          <a href="/blog/first-post.html">
+            <time>2025-08-13</time>
+            初めての投稿
+          </a>
+        </li>
+      </ul>
     </section>
-  </main>
 
-  <footer class="footer">© <span id="y"></span> noeshiro</footer>
-  <script>document.getElementById("y").textContent = new Date().getFullYear();</script>
+    <section id="about" class="section">
+      <div class="sec-head"><h2>about</h2></div>
+      <div class="paper">
+        <p>24歳 / 東京の広告代理店。データ実装・分析を担当。ボカロ制作、イラスト、Web制作を学習中。好き：サイクリング / 邦ロック / アニメ。</p>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="sec-head"><h2>contact</h2></div>
+      <div class="paper">
+        <p>お仕事の相談は <a href="mailto:you@example.com">you@example.com</a> まで。</p>
+        <!-- アフィタグはこの下にそのまま貼る -->
+        <!-- <script src="..."></script> -->
+      </div>
+    </section>
+
+    <footer class="foot">© <span id="y"></span> noeshiro</footer>
+  </main>
 </body>
 </html>
 
