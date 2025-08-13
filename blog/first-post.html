@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>初めての投稿 — noeshiro</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="icon" href="/favicon.ico">
+  <meta property="og:image" content="https://www.noeshiro.com/images/og.jpg">
+</head>
+<body class="layout">
+  <aside class="side">
+    <a class="logo" href="/">noeshiro</a>
+    <nav class="side-nav"><a href="/blog/">blog</a><a href="/#works">works</a></nav>
+  </aside>
+
+  <main class="main">
+    <article class="article">
+      <header class="article-head">
+        <h1>初めての投稿</h1>
+        <time datetime="2025-08-13">2025-08-13</time>
+      </header>
+
+      <p>本文サンプル。画像は <code>/images</code> に置いて <code>&lt;img src="/images/xxx.jpg" alt=""&gt;</code>。</p>
+      <h2>見出し</h2>
+      <p>箇条書き：</p>
+      <ul><li>ポイント1</li><li>ポイント2</li></ul>
+
+      <!-- アフィリエイトタグ（提供されたものをここへ） -->
+      <!-- <script src="..."></script> -->
+    </article>
+
+    <p class="back"><a href="/blog/">← back to list</a></p>
+    <footer class="foot">© <span id="y"></span> noeshiro</footer>
+  </main>
+
+  <script>document.getElementById("y").textContent=new Date().getFullYear();</script>
+</body>
+</html>
