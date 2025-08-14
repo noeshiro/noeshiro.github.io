@@ -1,98 +1,64 @@
-// ==== 背景 Canvas（星＝#54dbc2／マウス追従なし・最背面） ====
+// 背景の星アニメ
 (() => {
   const cvs = document.getElementById('bg');
-  if(!cvs) return;
   const ctx = cvs.getContext('2d');
-  let w, h, dpr, raf;
-  const P = [];
+  let w, h, dpr;
+  let stars = [];
 
-  const resize = () => {
-    dpr = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
-    w = cvs.width = Math.floor(innerWidth * dpr);
-    h = cvs.height = Math.floor(innerHeight * dpr);
-    cvs.style.width = innerWidth + 'px';
-    cvs.style.height = innerHeight + 'px';
-  };
-  resize(); addEventListener('resize', resize);
+  function resize() {
+    dpr = window.devicePixelRatio || 1;
+    w = window.innerWidth;
+    h = window.innerHeight;
+    cvs.width = w * dpr;
+    cvs.height = h * dpr;
+    ctx.scale(dpr, dpr);
+  }
 
-  const rand = (a,b)=> a + Math.random()*(b-a);
-  const spawn = (n=28) => {
-    P.length = 0;
-    for(let i=0;i<n;i++){
-      P.push({
-        x: rand(0,w), y: rand(0,h),
-        r: rand(1.0*dpr, 2.2*dpr),
-        vx: rand(-0.15, 0.15), vy: rand(-0.12, 0.12),
-        a: rand(0.25, 0.45)
+  function initStars(count = 50) {
+    stars = [];
+    for (let i = 0; i < count; i++) {
+      stars.push({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        r: Math.random() * 2 + 1,
+        vx: (Math.random() - 0.5) * 0.3,
+        vy: (Math.random() - 0.5) * 0.3
       });
     }
-  };
-  spawn();
+  }
 
-  const loop = () => {
-    ctx.clearRect(0,0,w,h);
-
-    // やさしい固定グラデーション（中央固定・追従なし）
-    const mx = w/2, my = h/2;
-    const grd = ctx.createRadialGradient(mx,my, 0, mx,my, Math.max(w,h)*0.8);
-    grd.addColorStop(0, 'rgba(84,219,194,0.05)');
-    grd.addColorStop(1, 'rgba(84,219,194,0.00)');
-    ctx.fillStyle = grd; ctx.fillRect(0,0,w,h);
-
-    // 星（点）
-    for(const p of P){
-      p.x += p.vx;
-      p.y += p.vy;
-      if(p.x < 0 || p.x > w) p.vx *= -1;
-      if(p.y < 0 || p.y > h) p.vy *= -1;
-
+  function draw() {
+    ctx.clearRect(0, 0, w, h);
+    ctx.fillStyle = varColor;
+    stars.forEach(s => {
       ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
-      ctx.fillStyle = `rgba(84,219,194,${p.a})`;
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fillStyle = '#54dbc2';
       ctx.fill();
-    }
+      s.x += s.vx;
+      s.y += s.vy;
+      if (s.x < 0 || s.x > w) s.vx *= -1;
+      if (s.y < 0 || s.y > h) s.vy *= -1;
+    });
+    requestAnimationFrame(draw);
+  }
 
-    // 近い星だけ細いライン（色は淡い #54dbc2）
-    for(let i=0;i<P.length;i++){
-      for(let j=i+1;j<P.length;j++){
-        const a=P[i], b=P[j];
-        const dx=a.x-b.x, dy=a.y-b.y, dist = Math.hypot(dx,dy);
-        if(dist < 120*dpr){
-          ctx.strokeStyle = `rgba(84,219,194,${(1 - dist/(120*dpr))*0.12})`;
-          ctx.lineWidth = 1*dpr;
-          ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke();
-        }
-      }
-    }
-
-    raf = requestAnimationFrame(loop);
-  };
-  raf = requestAnimationFrame(loop);
+  resize();
+  initStars();
+  draw();
+  window.addEventListener('resize', () => {
+    resize();
+    initStars();
+  });
 })();
 
-// ==== ハンバーガー（×にモーフ／メニュー開閉のみ） ====
+// ハンバーガーメニュー
 (() => {
   const btn = document.getElementById('menuBtn');
   const panel = document.getElementById('navPanel');
-  const backdrop = panel?.querySelector('.nav-backdrop');
-  const links = panel?.querySelectorAll('.nav-link');
-  if(!btn || !panel) return;
-
-  const toggle = (open) => {
-    const root = document.documentElement;
-    root.classList.toggle('nav-open', open);
-    document.body.classList.toggle('nav-open', open);
-    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-    panel.setAttribute('aria-hidden', open ? 'false' : 'true');
-    if(open){ setTimeout(()=> links?.[0]?.focus?.(), 150); } else { btn.focus(); }
-  };
-
   btn.addEventListener('click', () => {
-    const isOpen = document.documentElement.classList.contains('nav-open');
-    toggle(!isOpen);
+    document.documentElement.classList.toggle('nav-open');
   });
-  backdrop?.addEventListener('click', () => toggle(false));
-  links?.forEach(a => a.addEventListener('click', () => toggle(false)));
-  addEventListener('keydown', e => { if(e.key==='Escape') toggle(false); });
 })();
+
 
