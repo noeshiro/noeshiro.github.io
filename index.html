@@ -1,95 +1,92 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>noeshiro</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>のえしろ（noeshiro） | ポートフォリオ & ブログ</title>
+  <meta name="description" content="のえしろ（noeshiro）のポートフォリオ＆ブログ。DTM・デザイン・Webの作例やメモを公開。">
+  <link rel="canonical" href="https://noeshiro.com/">
+  <link rel="alternate" href="https://noeshiro.com/" hreflang="ja" />
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="のえしろ（noeshiro）">
+  <meta property="og:title" content="のえしろ（noeshiro） | ポートフォリオ & ブログ">
+  <meta property="og:description" content="のえしろ（noeshiro）のポートフォリオ＆ブログ。DTM・デザイン・Webの作例やメモを公開。">
+  <meta property="og:url" content="https://noeshiro.com/">
+  <meta property="og:image" content="https://noeshiro.com/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "のえしろ（noeshiro）",
+    "alternateName": "noeshiro",
+    "url": "https://noeshiro.com/",
+    "description": "のえしろ（noeshiro）のポートフォリオ＆ブログ"
+  }
+  </script>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- 星（粒）アニメ用 Canvas：最背面 -->
-  <canvas class="bg-canvas" id="bg"></canvas>
+  <!-- 背景アニメ -->
+  <canvas id="bg"></canvas>
 
-  <!-- Header（右上ハンバーガー：三本線のみ） -->
-  <header class="site-header">
-    <button class="hamburger" id="menuBtn" aria-label="メニューを開く" aria-controls="navPanel" aria-expanded="false">
-      <span class="bar top"></span>
-      <span class="bar mid"></span>
-      <span class="bar bot"></span>
+  <!-- ヘッダー -->
+  <header class="header">
+    <div class="logo">noeshiro</div>
+    <button id="menuBtn" class="menu-btn" aria-label="メニュー" aria-expanded="false">
+      <span></span><span></span><span></span>
     </button>
   </header>
 
-  <!-- スライドメニュー -->
-  <nav class="nav-overlay" id="navPanel" aria-hidden="true">
-    <div class="nav-inner">
-      <ul class="nav-menu">
-        <li style="--i:0"><a href="/" class="nav-link">Top</a></li>
-        <li style="--i:1"><a href="#about" class="nav-link">About</a></li>
-        <li style="--i:2"><a href="#blog" class="nav-link">Blog</a></li>
-        <li style="--i:3"><a href="#works" class="nav-link">Works</a></li>
-        <li style="--i:4"><a href="mailto:you@example.com" class="nav-link">Contact</a></li>
-      </ul>
-    </div>
-    <button class="nav-backdrop" aria-label="メニューを閉じる"></button>
+  <!-- ナビゲーション -->
+  <nav id="navPanel" class="nav-panel" aria-hidden="true">
+    <div class="nav-backdrop"></div>
+    <ul>
+      <li><a href="#about" class="nav-link">About</a></li>
+      <li><a href="#works" class="nav-link">Works</a></li>
+      <li><a href="#blog" class="nav-link">Blog</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
+    </ul>
   </nav>
 
-  <main>
-    <!-- Hero -->
-    <section class="hero reveal">
-      <div>
-        <h1 class="hero-title" id="heroTitle">noeshiro</h1>
-        <p class="hero-sub">noeshiroの制作メモ＆ポートフォリオサイト</p>
-      </div>
-      <div class="marquee" aria-hidden="true">
-        <div class="marquee-row">
-          <span>noeshiro — portfolio / blog — </span>
-          <span>noeshiro — portfolio / blog — </span>
-          <span>noeshiro — portfolio / blog — </span>
-        </div>
-      </div>
-    </section>
+  <!-- Hero -->
+  <section class="hero">
+    <h1>のえしろ（noeshiro）</h1>
+    <p>DTM・デザイン・Web制作を中心に活動しています。</p>
+  </section>
 
-    <!-- About（カード束） -->
-    <section class="about-deck reveal" id="about">
-      <div class="deck" data-tilt>
-        <img src="images/about-1.jpg" alt="" class="deck-img is-top">
-        <img src="images/about-2.jpg" alt="" class="deck-img">
-        <img src="images/about-3.jpg" alt="" class="deck-img">
-        <img src="images/about-4.jpg" alt="" class="deck-img">
-      </div>
-      <div class="deck-info">
-        <h2 class="font-title">About</h2>
-        <p>イラスト・デザイン・作曲 まわりを学びながら作っています。</p>
-        <a class="ink" href="#works">もっと読む</a>
-      </div>
-    </section>
+  <!-- About -->
+  <section id="about" class="section">
+    <h2>About</h2>
+    <p>「のえしろ（noeshiro）」はクリエイティブ活動のポートフォリオ兼ブログです。</p>
+  </section>
 
-    <!-- Works -->
-    <section class="works-grid reveal" id="works">
-      <article class="tile" data-tilt>
-        <a class="thumb" href="#"><img src="images/work-a.jpg" alt=""></a>
-        <h3>作品タイトルA</h3>
-        <p class="meta">2025/08 • Motion / Web</p>
-      </article>
-      <article class="tile" data-tilt>
-        <a class="thumb" href="#"><img src="images/work-b.jpg" alt=""></a>
-        <h3>作品タイトルB</h3>
-        <p class="meta">2025/07 • Illustration</p>
-      </article>
-      <article class="tile" data-tilt>
-        <a class="thumb" href="#"><img src="images/work-c.jpg" alt=""></a>
-        <h3>作品タイトルC</h3>
-        <p class="meta">2025/06 • Music</p>
-      </article>
-    </section>
+  <!-- Works -->
+  <section id="works" class="section">
+    <h2>Works</h2>
+    <div class="grid">
+      <div class="tile"><img src="images/sample1.jpg" alt="作品1"></div>
+      <div class="tile"><img src="images/sample2.jpg" alt="作品2"></div>
+      <div class="tile"><img src="images/sample3.jpg" alt="作品3"></div>
+    </div>
+  </section>
 
-    <section id="blog" class="reveal">
-      <h2>Blog</h2>
-      <p>（あとでブログ一覧を差し込む場所）</p>
-    </section>
-  </main>
+  <!-- Blog -->
+  <section id="blog" class="section">
+    <h2>Blog</h2>
+    <p>制作記録や学んだことをまとめています。</p>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section">
+    <h2>Contact</h2>
+    <p>お問い合わせはSNSまたはメールでお気軽にどうぞ。</p>
+  </section>
+
+  <footer class="footer">
+    <p>&copy; 2025 noeshiro</p>
+  </footer>
 
   <script src="script.js"></script>
 </body>
 </html>
-
