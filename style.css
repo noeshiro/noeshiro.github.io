@@ -6,13 +6,15 @@ body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-app
 h1,h2,h3{margin:0}
 a{color:inherit;text-decoration:none}
 
-/* 背景 Canvas（背面） */
-.bg-canvas{position:fixed;inset:0;z-index:-1;display:block}
+/* 背景 Canvas（最背面に固定） */
+.bg-canvas{
+  position:fixed; inset:0; z-index:-2; display:block; /* ← 最背面 */
+  pointer-events:none; /* クリック貫通 */
+}
 
 /* ===== Header & Hamburger（三本線だけ見せる） ===== */
 .site-header{position:fixed;top:16px;right:16px;z-index:1000}
 .hamburger{
-  /* クリック範囲は確保（視覚的な枠は出さない） */
   width:46px;height:46px;padding:10px;background:transparent;border:none;
   display:grid;place-items:center;cursor:pointer;
 }
@@ -23,10 +25,8 @@ a{color:inherit;text-decoration:none}
   transform-origin:center;
 }
 .hamburger .bar + .bar{margin-top:6px}
-/* hover で微動 */
 .hamburger:hover .top{transform:translateY(1px)}
 .hamburger:hover .bot{transform:translateY(-1px)}
-/* 開いた時に × へ */
 .nav-open .hamburger .mid{opacity:0}
 .nav-open .hamburger .top{transform:translateY(8px) rotate(45deg)}
 .nav-open .hamburger .bot{transform:translateY(-8px) rotate(-45deg)}
@@ -59,7 +59,6 @@ section{margin-bottom:80px}
 .hero{position:relative;min-height:52vh;display:grid;place-items:center;text-align:center;overflow:clip}
 .hero-title{font-size:clamp(40px,12vw,120px);line-height:1;letter-spacing:.01em;will-change:transform;transform:translateZ(0)}
 .hero-sub{opacity:.75;margin-top:10px;font-size:clamp(14px,3.4vw,18px)}
-/* marquee */
 .marquee{position:absolute;left:0;right:0;bottom:0;pointer-events:none;overflow:hidden}
 .marquee-row{display:inline-flex;gap:60px;font-size:clamp(24px,7vw,60px);white-space:nowrap;opacity:.06;animation:marquee 24s linear infinite}
 @keyframes marquee{to{transform:translateX(-50%)}}
