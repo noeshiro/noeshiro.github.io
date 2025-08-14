@@ -1,129 +1,61 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>noeshiro</title>
-
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R6W51L5MP1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-  
-    gtag('config', 'G-R6W51L5MP1');
-  </script>
-  
-  
-  <meta name="description" content="noeshiroの制作と記録。DTM / design / web。">
-  <link rel="icon" href="/favicon.ico" />
-  <link rel="canonical" href="https://www.noeshiro.com/">
-  <link rel="stylesheet" href="style.css" >
-  <script defer src="script.js"></script>
-  <meta property="og:image" content="https://www.noeshiro.com/images/og.jpg">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>noeshiro | Portfolio & Blog</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body class="layout">
-  <!-- 左サイド / 固定ナビ -->
-  <aside class="side">
-    <a class="logo" href="/">noeshiro</a>
-    <nav class="side-nav">
-      <a href="/#works">works</a>
-      <a href="/blog/">blog</a>
-      <a href="/#about">about</a>
-      <a href="/#contact">contact</a>
-    </nav>
-    <button id="themeBtn" class="theme-btn" aria-label="theme">○</button>
-  </aside>
+<body>
 
-  <!-- 右カラム / 本文 -->
-  <main class="main">
-    <section class="hero">
-      <h1>
-        制作と学びを<br>
-        ていねいに記録する。
-      </h1>
-      <p class="lead">
-        DTM / Design / Web。作品のアーカイブとブログを更新しています。
-      </p>
-    </section>
+<!-- ====== Hero ====== -->
+<section class="hero reveal">
+  <h1 class="hero-title">noeshiro</h1>
+  <p class="hero-sub">DTM / Design / Web — つくったものを記録する</p>
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-row">
+      <span>noeshiro — portfolio / blog — </span>
+      <span>noeshiro — portfolio / blog — </span>
+      <span>noeshiro — portfolio / blog — </span>
+    </div>
+  </div>
+</section>
 
-    <section id="works" class="section">
-      <div class="sec-head">
-        <h2>works</h2>
-        <a class="more" href="#contact">commission →</a>
-      </div>
+<!-- ====== About（カード束） ====== -->
+<section class="about-deck reveal">
+  <div class="deck" data-tilt>
+    <img src="images/about-1.jpg" alt="" class="deck-img is-top">
+    <img src="images/about-2.jpg" alt="" class="deck-img">
+    <img src="images/about-3.jpg" alt="" class="deck-img">
+    <img src="images/about-4.jpg" alt="" class="deck-img">
+  </div>
+  <div class="deck-info">
+    <h2 class="font-title">About</h2>
+    <p>東京拠点の制作メモ＆ポートフォリオ。音・デザイン・Web まわりを学びながら作っています。</p>
+    <a class="ink" href="/about">もっと読む</a>
+  </div>
+</section>
 
-      <!-- 縦長サムネ重視のグリッド -->
-      <div class="grid works">
-        <article class="tile">
-          <a class="thumb" href="https://example.com" target="_blank" rel="noreferrer">
-            <img src="/images/work-a.jpg" alt="作品A">
-          </a>
-          <div class="meta">
-            <span class="date">2025/08</span>
-            <h3>作品タイトルA</h3>
-            <p>1〜2行の説明。YouTube / MV / Web など。</p>
-          </div>
-        </article>
+<!-- ====== Works ====== -->
+<section class="works-grid reveal">
+  <article class="tile" data-tilt>
+    <a class="thumb" href="#"><img src="images/work-a.jpg" alt=""></a>
+    <h3>作品タイトルA</h3>
+    <p class="meta">2025/08 • Motion / Web</p>
+  </article>
+  <article class="tile" data-tilt>
+    <a class="thumb" href="#"><img src="images/work-b.jpg" alt=""></a>
+    <h3>作品タイトルB</h3>
+    <p class="meta">2025/07 • Illustration</p>
+  </article>
+  <article class="tile" data-tilt>
+    <a class="thumb" href="#"><img src="images/work-c.jpg" alt=""></a>
+    <h3>作品タイトルC</h3>
+    <p class="meta">2025/06 • Music</p>
+  </article>
+</section>
 
-        <article class="tile">
-          <a class="thumb" href="#" aria-label="作品B">
-            <img src="/images/work-b.jpg" alt="作品B">
-          </a>
-          <div class="meta">
-            <span class="date">2025/07</span>
-            <h3>作品タイトルB</h3>
-            <p>説明テキスト。スクショは /images に配置。</p>
-          </div>
-        </article>
-
-        <article class="tile">
-          <a class="thumb" href="#" aria-label="作品C">
-            <img src="/images/work-c.jpg" alt="作品C">
-          </a>
-          <div class="meta">
-            <span class="date">2025/06</span>
-            <h3>作品タイトルC</h3>
-            <p>説明テキスト。後で差し替え。</p>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="sec-head">
-        <h2>blog</h2>
-        <a class="more" href="/blog/">all posts →</a>
-      </div>
-      <ul class="postlist">
-        <li>
-          <a href="/blog/first-post.html">
-            <time>2025-08-13</time>
-            初めての投稿
-          </a>
-        </li>
-      </ul>
-    </section>
-
-    <section id="about" class="section">
-      <div class="sec-head"><h2>about</h2></div>
-      <div class="paper">
-        <p>。</p>
-      </div>
-    </section>
-
-    <section id="contact" class="section">
-      <div class="sec-head"><h2>contact</h2></div>
-      <div class="paper">
-        <p>お仕事の相談は <a href="mailto:you@example.com">you@example.com</a> まで。</p>
-        <!-- アフィタグはこの下にそのまま貼る -->
-        <!-- <script src="..."></script> -->
-      </div>
-    </section>
-
-    <footer class="foot">© <span id="y"></span> noeshiro</footer>
-  </main>
+<script src="script.js"></script>
 </body>
 </html>
 
