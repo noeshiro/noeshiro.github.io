@@ -1,7 +1,7 @@
-// prefers-reduced-motion
+// Reduced motion
 const REDUCED = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-/* ===== 背景 Canvas 粒アニメ ===== */
+/* ===== 背景 Canvas（星＝#54dbc2） ===== */
 (() => {
   const cvs = document.getElementById('bg');
   if(!cvs) return;
@@ -18,15 +18,16 @@ const REDUCED = window.matchMedia && window.matchMedia('(prefers-reduced-motion:
   };
   resize(); addEventListener('resize', resize);
 
+  // 粒初期化
   const rand = (a,b)=> a + Math.random()*(b-a);
   const spawn = (n=28) => {
     P.length = 0;
     for(let i=0;i<n;i++){
       P.push({
         x: rand(0,w), y: rand(0,h),
-        r: rand(1.0*dpr, 2.2*dpr),
-        vx: rand(-0.15, 0.15), vy: rand(-0.12, 0.12),
-        a: rand(0.08, 0.16)
+        r: rand(1.0*dpr, 2.2*dpr),            // 半径
+        vx: rand(-0.15, 0.15), vy: rand(-0.12, 0.12), // 速度
+        a: rand(0.25, 0.55)                   // 不透明度（#54dbc2 用に少し上げる）
       });
     }
   };
@@ -45,13 +46,14 @@ const REDUCED = window.matchMedia && window.matchMedia('(prefers-reduced-motion:
   const loop = () => {
     ctx.clearRect(0,0,w,h);
 
-    // 淡いラジアルベール
+    // #54dbc2の淡いラジアルベール
+    // #54dbc2 = rgb(84,219,194)
     const grd = ctx.createRadialGradient(mx,my, 0, mx,my, Math.max(w,h)*0.8);
-    grd.addColorStop(0, 'rgba(0,0,0,0.03)');
-    grd.addColorStop(1, 'rgba(0,0,0,0)');
+    grd.addColorStop(0, 'rgba(84,219,194,0.06)');
+    grd.addColorStop(1, 'rgba(84,219,194,0.00)');
     ctx.fillStyle = grd; ctx.fillRect(0,0,w,h);
 
-    // 粒
+    // 粒子（星）
     for(const p of P){
       p.x += p.vx + (mx - p.x) * 0.00004;
       p.y += p.vy + (my - p.y) * 0.00004;
@@ -60,17 +62,17 @@ const REDUCED = window.matchMedia && window.matchMedia('(prefers-reduced-motion:
 
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
-      ctx.fillStyle = `rgba(17,17,17,${p.a})`;
+      ctx.fillStyle = `rgba(84,219,194,${p.a})`; // ← 星の色を #54dbc2 に
       ctx.fill();
     }
 
-    // 近距離のみ細線
+    // 近距離リンクラインも #54dbc2（薄く）
     for(let i=0;i<P.length;i++){
       for(let j=i+1;j<P.length;j++){
         const a=P[i], b=P[j];
         const dx=a.x-b.x, dy=a.y-b.y, dist = Math.hypot(dx,dy);
         if(dist < 120*dpr){
-          ctx.strokeStyle = `rgba(17,17,17,${(1 - dist/(120*dpr))*0.08})`;
+          ctx.strokeStyle = `rgba(84,219,194,${(1 - dist/(120*dpr))*0.20})`;
           ctx.lineWidth = 1*dpr;
           ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke();
         }
@@ -137,12 +139,12 @@ const REDUCED = window.matchMedia && window.matchMedia('(prefers-reduced-motion:
   if(!REDUCED) setInterval(()=>{ i=(i+1)%imgs.length; show(i); }, 3500);
 })();
 
-/* ===== Hero タイトル Parallax ===== */
+/* ===== Hero Parallax ===== */
 (() => {
   const title = document.getElementById('heroTitle');
   if(!title) return;
   let rx=0, ry=0, vx=0, vy=0, raf=0;
-  const max = 8; // px
+  const max = 8;
   const loop = () => {
     title.style.transform = `translate(${vx}px, ${vy}px)`;
     vx += (rx - vx)*0.1; vy += (ry - vy)*0.1;
@@ -161,7 +163,7 @@ const REDUCED = window.matchMedia && window.matchMedia('(prefers-reduced-motion:
   addEventListener('pointermove', e => move(e.clientX, e.clientY), {passive:true});
 })();
 
-/* ===== ハンバーガー（×にモーフ + スライドメニュー） ===== */
+/* ===== ハンバーガー（×にモーフ＋スタッガーメニュー） ===== */
 (() => {
   const btn = document.getElementById('menuBtn');
   const panel = document.getElementById('navPanel');
@@ -186,3 +188,4 @@ const REDUCED = window.matchMedia && window.matchMedia('(prefers-reduced-motion:
   links?.forEach(a => a.addEventListener('click', () => toggle(false)));
   addEventListener('keydown', e => { if(e.key==='Escape') toggle(false); });
 })();
+
