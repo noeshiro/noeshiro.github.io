@@ -2,101 +2,15 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>noeshiro Portfolio</title>
-  <style>
-    /* ====== ベース ====== */
-    *, *::before, *::after { box-sizing: border-box; }
-    body {
-      margin: 0; font-family: system-ui, sans-serif;
-      background: #fefefe; color: #111; line-height: 1.6;
-    }
-    h1, h2, h3, h4 { margin: 0; }
-
-    main {
-      padding: 100px 20px;
-      max-width: 960px; margin: auto;
-    }
-    section { margin-bottom: 80px; }
-    .hero {
-      text-align: center; padding: 80px 20px;
-    }
-    .hero h1 {
-      font-size: clamp(28px, 6vw, 56px);
-      margin-bottom: 20px;
-    }
-    .hero p {
-      font-size: clamp(16px, 3.2vw, 20px);
-      color: #555;
-    }
-
-    /* ===== Header & Hamburger ===== */
-    .site-header{
-      position: fixed; top: 16px; right: 16px; z-index: 1000;
-    }
-    .hamburger{
-      width: 46px; height: 46px; border-radius: 12px;
-      background: rgba(255,255,255,.72);
-      -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
-      display: grid; place-items: center; border: 1px solid rgba(0,0,0,.06);
-      transition: transform .18s ease;
-    }
-    .hamburger:active{ transform: scale(.96); }
-    .hamburger .bar{
-      display:block; width: 22px; height: 2px; background:#111;
-      transition: transform .35s cubic-bezier(.2,.8,.2,1), opacity .2s ease, width .25s ease;
-      transform-origin: center;
-    }
-    .hamburger .bar + .bar{ margin-top: 6px; }
-    .hamburger:hover .top{ transform: translateY(1px); }
-    .hamburger:hover .bot{ transform: translateY(-1px); }
-    .nav-open .hamburger .mid{ opacity: 0; }
-    .nav-open .hamburger .top{
-      transform: translateY(8px) rotate(45deg);
-      width: 22px;
-    }
-    .nav-open .hamburger .bot{
-      transform: translateY(-8px) rotate(-45deg);
-      width: 22px;
-    }
-
-    /* ===== Overlay Panel ===== */
-    .nav-overlay{ position: fixed; inset: 0; z-index: 999; pointer-events: none; }
-    .nav-overlay .nav-backdrop{
-      position:absolute; inset:0; background: rgba(0,0,0,.25);
-      opacity:0; transition: opacity .28s ease;
-    }
-    .nav-overlay .nav-inner{
-      position: absolute; top:0; right:0; height:100%; width:min(86vw, 360px);
-      background:#f7f7f7; border-left: 1px solid #e6e6e6;
-      transform: translateX(100%); transition: transform .38s cubic-bezier(.16,1,.3,1);
-      display:flex; align-items:center; justify-content:center; padding: 32px 24px;
-    }
-    .nav-menu{ list-style:none; padding:0; margin:0; width:100%; }
-    .nav-menu li + li{ margin-top: 18px; }
-    .nav-link{
-      display:block; font-size: clamp(20px, 3.6vw, 32px); letter-spacing:.02em;
-      text-decoration:none; color:#111; transform: translateY(8px); opacity:0;
-    }
-    .nav-open .nav-link{
-      animation: navIn .45s cubic-bezier(.16,1,.3,1) forwards;
-      animation-delay: calc(var(--i,0) * 60ms + 120ms);
-    }
-    @keyframes navIn {
-      to { transform: none; opacity: 1; }
-    }
-    .nav-open .nav-overlay{ pointer-events: auto; }
-    .nav-open .nav-overlay .nav-inner{ transform: translateX(0); }
-    .nav-open .nav-overlay .nav-backdrop{ opacity:1; }
-    .nav-open body, body.nav-open{ overflow: hidden; }
-    @media (prefers-reduced-motion: reduce){
-      .nav-overlay .nav-inner, .hamburger .bar, .nav-link { transition: none; animation: none; }
-    }
-  </style>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>noeshiro | Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <!-- 背景 Canvas 粒子 -->
+  <canvas class="bg-canvas" id="bg"></canvas>
 
-  <!-- Header & Hamburger -->
+  <!-- Header（右上ハンバーガー：三本線のみ表示） -->
   <header class="site-header">
     <button class="hamburger" id="menuBtn" aria-label="メニューを開く" aria-controls="navPanel" aria-expanded="false">
       <span class="bar top"></span>
@@ -105,7 +19,7 @@
     </button>
   </header>
 
-  <!-- Overlay Navigation -->
+  <!-- スライドメニュー -->
   <nav class="nav-overlay" id="navPanel" aria-hidden="true">
     <div class="nav-inner">
       <ul class="nav-menu">
@@ -119,62 +33,63 @@
     <button class="nav-backdrop" aria-label="メニューを閉じる"></button>
   </nav>
 
-  <!-- Main Content -->
   <main>
-    <section class="hero">
-      <h1>noeshiro</h1>
-      <p>ポートフォリオサイトへようこそ。<br>ここに自己紹介やキャッチコピーを入れます。</p>
+    <!-- Hero -->
+    <section class="hero reveal">
+      <div>
+        <h1 class="hero-title" id="heroTitle">noeshiro</h1>
+        <p class="hero-sub">DTM / Design / Web — つくったものを記録する</p>
+      </div>
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee-row">
+          <span>noeshiro — portfolio / blog — </span>
+          <span>noeshiro — portfolio / blog — </span>
+          <span>noeshiro — portfolio / blog — </span>
+        </div>
+      </div>
     </section>
 
-    <section id="about">
-      <h2>About</h2>
-      <p>自己紹介文や経歴、スキルを掲載します。</p>
+    <!-- About（カード束） -->
+    <section class="about-deck reveal" id="about">
+      <div class="deck" data-tilt>
+        <img src="images/about-1.jpg" alt="" class="deck-img is-top">
+        <img src="images/about-2.jpg" alt="" class="deck-img">
+        <img src="images/about-3.jpg" alt="" class="deck-img">
+        <img src="images/about-4.jpg" alt="" class="deck-img">
+      </div>
+      <div class="deck-info">
+        <h2 class="font-title">About</h2>
+        <p>東京拠点の制作メモ＆ポートフォリオ。音・デザイン・Web まわりを学びながら作っています。</p>
+        <a class="ink" href="#works">もっと読む</a>
+      </div>
     </section>
 
-    <section id="works">
-      <h2>Works</h2>
-      <p>制作物や作品集を掲載します。</p>
+    <!-- Works -->
+    <section class="works-grid reveal" id="works">
+      <article class="tile" data-tilt>
+        <a class="thumb" href="#"><img src="images/work-a.jpg" alt=""></a>
+        <h3>作品タイトルA</h3>
+        <p class="meta">2025/08 • Motion / Web</p>
+      </article>
+      <article class="tile" data-tilt>
+        <a class="thumb" href="#"><img src="images/work-b.jpg" alt=""></a>
+        <h3>作品タイトルB</h3>
+        <p class="meta">2025/07 • Illustration</p>
+      </article>
+      <article class="tile" data-tilt>
+        <a class="thumb" href="#"><img src="images/work-c.jpg" alt=""></a>
+        <h3>作品タイトルC</h3>
+        <p class="meta">2025/06 • Music</p>
+      </article>
     </section>
 
-    <section id="blog">
+    <section id="blog" class="reveal">
       <h2>Blog</h2>
-      <p>ブログ記事の一覧をここに表示できます。</p>
+      <p>（あとでブログ一覧を差し込む場所）</p>
     </section>
   </main>
 
-  <script>
-    // === Hamburger Menu ===
-    (() => {
-      const btn = document.getElementById('menuBtn');
-      const panel = document.getElementById('navPanel');
-      const backdrop = panel?.querySelector('.nav-backdrop');
-      const links = panel?.querySelectorAll('.nav-link');
-
-      if(!btn || !panel) return;
-
-      const toggle = (open) => {
-        const root = document.documentElement;
-        root.classList.toggle('nav-open', open);
-        document.body.classList.toggle('nav-open', open);
-        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-        panel.setAttribute('aria-hidden', open ? 'false' : 'true');
-        if(open){
-          setTimeout(()=> links?.[0]?.focus?.(), 150);
-        }else{
-          btn.focus();
-        }
-      };
-
-      btn.addEventListener('click', () => {
-        const isOpen = document.documentElement.classList.contains('nav-open');
-        toggle(!isOpen);
-      });
-      backdrop?.addEventListener('click', () => toggle(false));
-      links?.forEach(a => a.addEventListener('click', () => toggle(false)));
-      window.addEventListener('keydown', (e) => {
-        if(e.key === 'Escape') toggle(false);
-      });
-    })();
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
+
