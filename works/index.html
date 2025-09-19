@@ -1,1 +1,61 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <title>Works | noeshiro</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="/style.css" rel="stylesheet" />
+</head>
+<body class="theme-light">
+  <header class="site-header">
+    <nav class="nav">
+      <a href="/" class="logo">noeshiro</a>
+      <ul class="nav-list">
+        <li><a href="/works/" aria-current="page">Works</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/contact/">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
+  <main class="container wide">
+    <h1>Works</h1>
+
+    <nav class="tabs">
+      <a href="#vocaloid">ボカロ</a>
+      <a href="#bgm">BGM</a>
+      <a href="#collab">コラボ</a>
+    </nav>
+
+    <section id="vocaloid">
+      <h2>ボカロ</h2>
+      <div class="grid works-grid">
+        <article class="work-card">
+          <img src="/assets/cover-placeholder.jpg" alt="曲タイトルのカバー" />
+          <h3>曲タイトル（2025）</h3>
+          <p class="meta">Vocaloid / 150BPM / Key: A</p>
+          <p>
+            <a class="btn" href="https://youtu.be/XXXXXXXX" target="_blank" rel="noopener">YouTubeで再生</a>
+            <!-- 詳細ページを作る場合は下記を有効化
+            <a class="btn ghost" href="/works/sample-song/">詳細</a>
+            -->
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section id="bgm">
+      <h2>BGM</h2>
+      <div class="grid works-grid"></div>
+    </section>
+
+    <section id="collab">
+      <h2>コラボ</h2>
+      <div class="grid works-grid"></div>
+    </section>
+  </main>
+
+  <script src="/script.js"></script>
+</body>
+</html>
