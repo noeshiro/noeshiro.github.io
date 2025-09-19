@@ -1,25 +1,31 @@
 <!doctype html>
-<meta charset="utf-8">
-<title>blog — noeshiro</title>
-<link rel="icon" href="/favicon.ico">
-<link rel="stylesheet" href="/style.css">
-<body class="layout">
-  <aside class="side">
-    <a class="logo" href="/">noeshiro</a>
-    <nav class="side-nav">
-      <a href="/">home</a>
-      <a aria-current="page">blog</a>
-      <a href="/#works">works</a>
-      <a href="/#contact">contact</a>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <title>Blog | noeshiro</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="/style.css" rel="stylesheet" />
+</head>
+<body class="theme-light">
+  <header class="site-header">
+    <nav class="nav">
+      <a href="/" class="logo">noeshiro</a>
+      <ul class="nav-list">
+        <li><a href="/works/">Works</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/blog/" aria-current="page">Blog</a></li>
+        <li><a href="/contact/">Contact</a></li>
+      </ul>
     </nav>
-  </aside>
-  <main class="main">
-    <header class="hero tight"><h1>blog</h1></header>
-    <ul class="postlist big">
-      <li><a href="/blog/first-post.html"><time>2025-08-13</time> 初めての投稿</a></li>
-      <!-- 以降 <li> を追加 -->
+  </header>
+
+  <main class="container narrow">
+    <h1>Blog</h1>
+    <ul class="post-list">
+      <li><a href="/blog/first-post.html">first-post</a> <span class="date">2025-09-01</span></li>
     </ul>
-    <footer class="foot">© <span id="y"></span> noeshiro</footer>
   </main>
-  <script>document.getElementById("y").textContent=new Date().getFullYear();</script>
+
+  <script src="/script.js"></script>
 </body>
+</html>
