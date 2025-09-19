@@ -1,1 +1,44 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <title>Contact | noeshiro</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="/style.css" rel="stylesheet" />
+</head>
+<body class="theme-light">
+  <header class="site-header">
+    <nav class="nav">
+      <a href="/" class="logo">noeshiro</a>
+      <ul class="nav-list">
+        <li><a href="/works/">Works</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/contact/" aria-current="page">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container narrow">
+    <h1>Contact</h1>
+    <p>お仕事のご相談・コラボのお誘いは、以下のフォームまたはSNSのDMからどうぞ。</p>
+
+    <!-- まずはダミー。後で Formspree / Netlify Forms に差し替える想定 -->
+    <form action="mailto:yourmail@example.com" method="post" enctype="text/plain" class="contact-form">
+      <label>お名前<input type="text" name="name" required /></label>
+      <label>メール<input type="email" name="email" required /></label>
+      <label>ご用件<textarea name="message" rows="6" required></textarea></label>
+      <button type="submit">送信</button>
+    </form>
+
+    <p class="sns">
+      or DM →
+      <a href="https://x.com/yourid" target="_blank" rel="noopener">X</a> /
+      <a href="https://instagram.com/yourid" target="_blank" rel="noopener">Instagram</a>
+    </p>
+  </main>
+
+  <script src="/script.js"></script>
+</body>
+</html>
 
