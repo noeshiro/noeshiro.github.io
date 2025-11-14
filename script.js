@@ -107,9 +107,35 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         document.body.classList.remove('nav-open');
         document.getElementById('navPanel').setAttribute('aria-hidden', 'true');
         document.getElementById('menuBtn').setAttribute('aria-expanded', 'false');
+        document.documentElement.style.setProperty('--scrollbar-width', '0px');
       }
     }
   });
 });
 
-
+// ===== ナビゲーションリンククリック時にメニューを閉じる =====
+// メニューを閉じてから遷移させる
+document.querySelectorAll('.nav-link').forEach(link => {
+  link.addEventListener('click', function(e) {
+    const href = this.getAttribute('href');
+    
+    // アンカーリンク（#で始まる）の場合のみ特別処理
+    if (href && href.startsWith('#')) {
+      e.preventDefault();
+      const target = document.querySelector(href);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+    
+    // メニューを閉じる（遷移を妨げない）
+    if (document.body.classList.contains('nav-open')) {
+      document.body.classList.remove('nav-open');
+      document.getElementById('navPanel').setAttribute('aria-hidden', 'true');
+      document.getElementById('menuBtn').setAttribute('aria-expanded', 'false');
+      document.documentElement.style.setProperty('--scrollbar-width', '0px');
+    }
+    
+    // 通常のリンクはそのまま遷移（e.preventDefault()を呼ばない）
+  });
+});
