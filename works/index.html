@@ -1,61 +1,173 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="utf-8" />
-  <title>Works | noeshiro</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link href="/style.css" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>About - noeshiro</title>
+  <meta name="description" content="のえしろについて" />
+  <link rel="stylesheet" href="/style.css" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R6W51L5MP1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-R6W51L5MP1');
+  </script>
 </head>
-<body class="theme-light">
+<body>
+  <!-- Header（右上ハンバーガー） -->
   <header class="site-header">
-    <nav class="nav">
-      <a href="/" class="logo">noeshiro</a>
-      <ul class="nav-list">
-        <li><a href="/works/" aria-current="page">Works</a></li>
-        <li><a href="/about/">About</a></li>
-        <li><a href="/blog/">Blog</a></li>
-        <li><a href="/contact/">Contact</a></li>
-      </ul>
-    </nav>
+    <button class="hamburger" id="menuBtn" aria-label="メニューを開く" aria-controls="navPanel" aria-expanded="false">
+      <span class="bar top"></span>
+      <span class="bar mid"></span>
+      <span class="bar bot"></span>
+    </button>
   </header>
-
-  <main class="container wide">
-    <h1>Works</h1>
-
-    <nav class="tabs">
-      <a href="#vocaloid">ボカロ</a>
-      <a href="#bgm">BGM</a>
-      <a href="#collab">コラボ</a>
-    </nav>
-
-    <section id="vocaloid">
-      <h2>ボカロ</h2>
-      <div class="grid works-grid">
-        <article class="work-card">
-          <img src="/assets/cover-placeholder.jpg" alt="曲タイトルのカバー" />
-          <h3>曲タイトル（2025）</h3>
-          <p class="meta">Vocaloid / 150BPM / Key: A</p>
-          <p>
-            <a class="btn" href="https://youtu.be/XXXXXXXX" target="_blank" rel="noopener">YouTubeで再生</a>
-            <!-- 詳細ページを作る場合は下記を有効化
-            <a class="btn ghost" href="/works/sample-song/">詳細</a>
-            -->
+  
+  <!-- スライドメニュー -->
+  <nav class="nav-overlay" id="navPanel" aria-hidden="true">
+    <div class="nav-inner">
+      <ul class="nav-menu">
+        <li style="--i:0"><a href="/" class="nav-link">Top</a></li>
+        <li style="--i:1"><a href="/about/" class="nav-link">About</a></li>
+        <li style="--i:2"><a href="/blog/" class="nav-link">Blog</a></li>
+        <li style="--i:3"><a href="/works/" class="nav-link">Works</a></li>
+        <li style="--i:4"><a href="/contact/" class="nav-link">Contact</a></li>
+      </ul>
+    </div>
+    <button class="nav-backdrop" aria-label="メニューを閉じる"></button>
+  </nav>
+  
+  <main>
+    <!-- Page Header -->
+    <section class="page-header reveal">
+      <h1 class="page-title">About</h1>
+      <p class="page-description">のえしろについて</p>
+    </section>
+    
+    <!-- Profile -->
+    <section class="about-profile reveal">
+      <div class="profile-container">
+        <div class="profile-image">
+          <img src="/images/profile.jpg" alt="noeshiro" />
+        </div>
+        <div class="profile-content">
+          <h2 class="profile-name">noeshiro</h2>
+          <p class="profile-role">Music Producer / Designer / Developer</p>
+          <p class="profile-bio">
+            DTM、デザイン、Web制作を中心に活動しています。<br>
+            音楽制作を最近始めて、日々学びながら制作を楽しんでいます。<br>
+            このサイトでは制作した作品や学んだことを記録していきます。
           </p>
-        </article>
+          <div class="profile-links">
+            <a href="https://twitter.com/noeshiro" target="_blank" rel="noopener noreferrer" class="profile-link">
+              <span>Twitter</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+            </a>
+            <a href="https://soundcloud.com/noeshiro" target="_blank" rel="noopener noreferrer" class="profile-link">
+              <span>SoundCloud</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+            </a>
+          </div>
+        </div>
       </div>
     </section>
-
-    <section id="bgm">
-      <h2>BGM</h2>
-      <div class="grid works-grid"></div>
+    
+    <!-- Skills -->
+    <section class="about-skills reveal">
+      <h2 class="section-title">Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <h3 class="skill-title">Music Production</h3>
+          <p class="skill-description">DTM初心者として日々学習中。作曲・編曲・ミックスを勉強しています。</p>
+          <div class="skill-tags">
+            <span class="tag">作曲</span>
+            <span class="tag">編曲</span>
+            <span class="tag">ミックス</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h3 class="skill-title">Design</h3>
+          <p class="skill-description">UI/UXデザイン、グラフィックデザインなど視覚表現全般。</p>
+          <div class="skill-tags">
+            <span class="tag">UI/UX</span>
+            <span class="tag">Graphic</span>
+            <span class="tag">Branding</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h3 class="skill-title">Web Development</h3>
+          <p class="skill-description">フロントエンドを中心にWebサイト・アプリケーションの制作。</p>
+          <div class="skill-tags">
+            <span class="tag">HTML/CSS</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">React</span>
+          </div>
+        </div>
+      </div>
     </section>
-
-    <section id="collab">
-      <h2>コラボ</h2>
-      <div class="grid works-grid"></div>
+    
+    <!-- Tools -->
+    <section class="about-tools reveal">
+      <h2 class="section-title">Tools & Software</h2>
+      <div class="tools-list">
+        <div class="tool-category">
+          <h3 class="tool-category-title">Music</h3>
+          <ul class="tool-items">
+            <li>DAW（使用しているDAW名）</li>
+            <li>Audio Interface</li>
+            <li>Plugins</li>
+          </ul>
+        </div>
+        <div class="tool-category">
+          <h3 class="tool-category-title">Design</h3>
+          <ul class="tool-items">
+            <li>Figma</li>
+            <li>Adobe Creative Cloud</li>
+            <li>Sketch</li>
+          </ul>
+        </div>
+        <div class="tool-category">
+          <h3 class="tool-category-title">Development</h3>
+          <ul class="tool-items">
+            <li>VS Code</li>
+            <li>Git / GitHub</li>
+            <li>Node.js</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    
+    <!-- CTA -->
+    <section class="about-cta reveal">
+      <div class="cta-content">
+        <h2 class="cta-title">興味を持っていただけましたか？</h2>
+        <p class="cta-description">お仕事のご相談やご質問など、お気軽にお問い合わせください。</p>
+        <a href="/contact/" class="cta-button">お問い合わせ</a>
+      </div>
     </section>
   </main>
-
+  
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p class="footer-text">© 2025 noeshiro</p>
+      <div class="footer-links">
+        <a href="https://twitter.com/noeshiro" target="_blank" rel="noopener noreferrer">Twitter</a>
+      </div>
+    </div>
+  </footer>
+  
   <script src="/script.js"></script>
 </body>
 </html>
+
