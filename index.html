@@ -7,21 +7,16 @@
   <meta name="description" content="のえしろのポートフォリオ＆制作メモ" />
   <link rel="stylesheet" href="style.css" />
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-R6W51L5MP1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-R6W51L5MP1');
-</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R6W51L5MP1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-R6W51L5MP1');
+  </script>
 </head>
 <body>
-
-  <!-- 星（粒）アニメ用 Canvas：最背面 -->
-  <canvas class="bg-canvas" id="bg"></canvas>
-
-  <!-- Header（右上ハンバーガー：三本線のみ） -->
+  <!-- Header（右上ハンバーガー） -->
   <header class="site-header">
     <button class="hamburger" id="menuBtn" aria-label="メニューを開く" aria-controls="navPanel" aria-expanded="false">
       <span class="bar top"></span>
@@ -29,7 +24,7 @@
       <span class="bar bot"></span>
     </button>
   </header>
-
+  
   <!-- スライドメニュー -->
   <nav class="nav-overlay" id="navPanel" aria-hidden="true">
     <div class="nav-inner">
@@ -43,63 +38,119 @@
     </div>
     <button class="nav-backdrop" aria-label="メニューを閉じる"></button>
   </nav>
-
+  
   <main>
     <!-- Hero -->
     <section class="hero reveal">
-      <div>
-        <h1 class="hero-title" id="heroTitle">noeshiro</h1>
+      <div class="hero-content">
+        <h1 class="hero-title">noeshiro</h1>
         <p class="hero-sub">DTM / Design / Web — つくったものを記録する</p>
       </div>
-      <div class="marquee" aria-hidden="true">
-        <div class="marquee-row">
-          <span>noeshiro — portfolio / blog — </span>
-          <span>noeshiro — portfolio / blog — </span>
-          <span>noeshiro — portfolio / blog — </span>
+    </section>
+    
+    <!-- About -->
+    <section class="about-section reveal" id="about">
+      <div class="about-deck">
+        <div class="deck">
+          <img src="images/about-1.jpg" alt="プロフィール画像" class="deck-img is-top">
+          <img src="images/about-2.jpg" alt="" class="deck-img">
+          <img src="images/about-3.jpg" alt="" class="deck-img">
+          <img src="images/about-4.jpg" alt="" class="deck-img">
+        </div>
+        <div class="deck-info">
+          <h2 class="section-title">About</h2>
+          <p class="section-description">DTM、デザイン、Web制作を中心に活動しています。<br>制作した作品や学んだことを記録していきます。</p>
+          <a class="link-underline" href="/about/">もっと読む →</a>
         </div>
       </div>
     </section>
-
-    <!-- About（カード束） -->
-    <section class="about-deck reveal" id="about">
-      <div class="deck" data-tilt>
-        <img src="images/about-1.jpg" alt="" class="deck-img is-top">
-        <img src="images/about-2.jpg" alt="" class="deck-img">
-        <img src="images/about-3.jpg" alt="" class="deck-img">
-        <img src="images/about-4.jpg" alt="" class="deck-img">
-      </div>
-      <div class="deck-info">
-        <h2 class="font-title">About</h2>
-        <p>のえしろのポートフォリオ＆制作メモ</p>
-        <a class="ink" href="#works">もっと読む</a>
-      </div>
-    </section>
-
+    
     <!-- Works -->
-    <section class="works-grid reveal" id="works">
-      <article class="tile" data-tilt>
-        <a class="thumb" href="#"><img src="images/work-a.jpg" alt=""></a>
-        <h3>作品タイトルA</h3>
-        <p class="meta">2025/08 • Motion / Web</p>
-      </article>
-      <article class="tile" data-tilt>
-        <a class="thumb" href="#"><img src="images/work-b.jpg" alt=""></a>
-        <h3>作品タイトルB</h3>
-        <p class="meta">2025/07 • Illustration</p>
-      </article>
-      <article class="tile" data-tilt>
-        <a class="thumb" href="#"><img src="images/work-c.jpg" alt=""></a>
-        <h3>作品タイトルC</h3>
-        <p class="meta">2025/06 • Music</p>
-      </article>
+    <section class="works-section reveal" id="works">
+      <div class="section-header">
+        <h2 class="section-title">Works</h2>
+        <a class="link-underline" href="/works/">すべて見る →</a>
+      </div>
+      <div class="works-grid">
+        <article class="tile">
+          <a class="thumb" href="/works/work-a.html">
+            <img src="images/work-a.jpg" alt="作品タイトルA">
+          </a>
+          <div class="tile-content">
+            <h3 class="tile-title">作品タイトルA</h3>
+            <p class="tile-meta">2025/08 • Motion / Web</p>
+          </div>
+        </article>
+        <article class="tile">
+          <a class="thumb" href="/works/work-b.html">
+            <img src="images/work-b.jpg" alt="作品タイトルB">
+          </a>
+          <div class="tile-content">
+            <h3 class="tile-title">作品タイトルB</h3>
+            <p class="tile-meta">2025/07 • Illustration</p>
+          </div>
+        </article>
+        <article class="tile">
+          <a class="thumb" href="/works/work-c.html">
+            <img src="images/work-c.jpg" alt="作品タイトルC">
+          </a>
+          <div class="tile-content">
+            <h3 class="tile-title">作品タイトルC</h3>
+            <p class="tile-meta">2025/06 • Music</p>
+          </div>
+        </article>
+      </div>
     </section>
-
-    <section id="blog" class="reveal">
-      <h2>Blog</h2>
-      <p>（あとでブログ一覧を差し込む場所）</p>
+    
+    <!-- Blog -->
+    <section class="blog-section reveal" id="blog">
+      <div class="section-header">
+        <h2 class="section-title">Blog</h2>
+        <a class="link-underline" href="/blog/">すべて見る →</a>
+      </div>
+      <div class="blog-grid">
+        <article class="blog-card">
+          <a href="/blog/post-1.html" class="blog-card-link">
+            <div class="blog-card-content">
+              <time class="blog-date">2025.11.14</time>
+              <h3 class="blog-title">ブログ記事のタイトルがここに入ります</h3>
+              <p class="blog-excerpt">記事の概要がここに入ります。このテキストは記事の最初の数行を表示します。</p>
+            </div>
+          </a>
+        </article>
+        <article class="blog-card">
+          <a href="/blog/post-2.html" class="blog-card-link">
+            <div class="blog-card-content">
+              <time class="blog-date">2025.11.10</time>
+              <h3 class="blog-title">2つ目のブログ記事タイトル</h3>
+              <p class="blog-excerpt">記事の概要テキストがここに表示されます。</p>
+            </div>
+          </a>
+        </article>
+        <article class="blog-card">
+          <a href="/blog/post-3.html" class="blog-card-link">
+            <div class="blog-card-content">
+              <time class="blog-date">2025.11.05</time>
+              <h3 class="blog-title">3つ目のブログ記事タイトル</h3>
+              <p class="blog-excerpt">記事の概要テキストがここに表示されます。</p>
+            </div>
+          </a>
+        </article>
+      </div>
     </section>
   </main>
-
+  
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p class="footer-text">© 2025 noeshiro</p>
+      <div class="footer-links">
+        <a href="https://twitter.com/noeshiro" target="_blank" rel="noopener noreferrer">Twitter</a>
+        <a href="https://github.com/noeshiro" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </div>
+    </div>
+  </footer>
+  
   <script src="script.js"></script>
 </body>
 </html>
