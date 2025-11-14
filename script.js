@@ -4,6 +4,11 @@
   const navPanel = document.getElementById('navPanel');
   const backdrop = document.querySelector('.nav-backdrop');
   
+  // スクロールバーの幅を計算
+  function getScrollbarWidth() {
+    return window.innerWidth - document.documentElement.clientWidth;
+  }
+  
   function toggleNav() {
     const isOpen = document.body.classList.contains('nav-open');
     
@@ -15,6 +20,10 @@
   }
   
   function openNav() {
+    // スクロールバーの幅を取得してCSS変数に設定
+    const scrollbarWidth = getScrollbarWidth();
+    document.documentElement.style.setProperty('--scrollbar-width', `${scrollbarWidth}px`);
+    
     document.body.classList.add('nav-open');
     navPanel.setAttribute('aria-hidden', 'false');
     menuBtn.setAttribute('aria-expanded', 'true');
@@ -24,6 +33,9 @@
     document.body.classList.remove('nav-open');
     navPanel.setAttribute('aria-hidden', 'true');
     menuBtn.setAttribute('aria-expanded', 'false');
+    
+    // CSS変数をリセット
+    document.documentElement.style.setProperty('--scrollbar-width', '0px');
   }
   
   // イベントリスナー
@@ -99,4 +111,5 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     }
   });
 });
+
 
