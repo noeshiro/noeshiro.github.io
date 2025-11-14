@@ -65,12 +65,21 @@ img {
   top: var(--spacing-sm);
   right: var(--spacing-sm);
   z-index: 1000;
+  transition: right 0.3s ease;
+}
+
+.nav-open .site-header {
+  right: calc(var(--spacing-sm) + var(--scrollbar-width, 0));
 }
 
 @media (min-width: 768px) {
   .site-header {
     top: var(--spacing-md);
     right: var(--spacing-md);
+  }
+  
+  .nav-open .site-header {
+    right: calc(var(--spacing-md) + var(--scrollbar-width, 0));
   }
 }
 
@@ -207,6 +216,7 @@ img {
 
 .nav-open body {
   overflow: hidden;
+  padding-right: var(--scrollbar-width, 0);
 }
 
 /* ===== Main Layout ===== */
