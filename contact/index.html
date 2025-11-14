@@ -1,43 +1,118 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="utf-8" />
-  <title>Contact | noeshiro</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link href="/style.css" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact - noeshiro</title>
+  <meta name="description" content="お問い合わせ" />
+  <link rel="stylesheet" href="/style.css" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R6W51L5MP1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-R6W51L5MP1');
+  </script>
 </head>
-<body class="theme-light">
+<body>
+  <!-- Header（右上ハンバーガー） -->
   <header class="site-header">
-    <nav class="nav">
-      <a href="/" class="logo">noeshiro</a>
-      <ul class="nav-list">
-        <li><a href="/works/">Works</a></li>
-        <li><a href="/about/">About</a></li>
-        <li><a href="/blog/">Blog</a></li>
-        <li><a href="/contact/" aria-current="page">Contact</a></li>
-      </ul>
-    </nav>
+    <button class="hamburger" id="menuBtn" aria-label="メニューを開く" aria-controls="navPanel" aria-expanded="false">
+      <span class="bar top"></span>
+      <span class="bar mid"></span>
+      <span class="bar bot"></span>
+    </button>
   </header>
-
-  <main class="container narrow">
-    <h1>Contact</h1>
-    <p>お仕事のご相談・コラボのお誘いは、以下のフォームまたはSNSのDMからどうぞ。</p>
-
-    <!-- まずはダミー。後で Formspree / Netlify Forms に差し替える想定 -->
-    <form action="mailto:yourmail@example.com" method="post" enctype="text/plain" class="contact-form">
-      <label>お名前<input type="text" name="name" required /></label>
-      <label>メール<input type="email" name="email" required /></label>
-      <label>ご用件<textarea name="message" rows="6" required></textarea></label>
-      <button type="submit">送信</button>
-    </form>
-
-    <p class="sns">
-      or DM →
-      <a href="https://x.com/yourid" target="_blank" rel="noopener">X</a> /
-      <a href="https://instagram.com/yourid" target="_blank" rel="noopener">Instagram</a>
-    </p>
+  
+  <!-- スライドメニュー -->
+  <nav class="nav-overlay" id="navPanel" aria-hidden="true">
+    <div class="nav-inner">
+      <ul class="nav-menu">
+        <li style="--i:0"><a href="/" class="nav-link">Top</a></li>
+        <li style="--i:1"><a href="/about/" class="nav-link">About</a></li>
+        <li style="--i:2"><a href="/blog/" class="nav-link">Blog</a></li>
+        <li style="--i:3"><a href="/works/" class="nav-link">Works</a></li>
+        <li style="--i:4"><a href="/contact/" class="nav-link">Contact</a></li>
+      </ul>
+    </div>
+    <button class="nav-backdrop" aria-label="メニューを閉じる"></button>
+  </nav>
+  
+  <main>
+    <!-- Page Header -->
+    <section class="page-header reveal">
+      <h1 class="page-title">Contact</h1>
+      <p class="page-description">お問い合わせ</p>
+    </section>
+    
+    <!-- Contact Content -->
+    <section class="contact-content reveal">
+      <div class="contact-intro">
+        <p>お仕事のご依頼・ご相談、その他お問い合わせは<br>下記のSNSまたはメールアドレスよりお気軽にご連絡ください。</p>
+      </div>
+      
+      <div class="contact-methods">
+        <div class="contact-method">
+          <h2 class="contact-method-title">SNS</h2>
+          <div class="contact-links">
+            <a href="https://twitter.com/noeshiro" target="_blank" rel="noopener noreferrer" class="contact-link">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
+              </svg>
+              <span>Twitter</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="external-icon">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+            </a>
+            <a href="https://soundcloud.com/noeshiro" target="_blank" rel="noopener noreferrer" class="contact-link">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 18V5l12-2v13"></path>
+                <circle cx="6" cy="18" r="3"></circle>
+                <circle cx="18" cy="16" r="3"></circle>
+              </svg>
+              <span>SoundCloud</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="external-icon">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+            </a>
+          </div>
+        </div>
+        
+        <div class="contact-method">
+          <h2 class="contact-method-title">Email</h2>
+          <div class="contact-email">
+            <a href="mailto:your-email@example.com" class="contact-link">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              <span>your-email@example.com</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="contact-note">
+        <p class="note-text">※ お返事まで数日お時間をいただく場合がございます。<br>あらかじめご了承ください。</p>
+      </div>
+    </section>
   </main>
-
+  
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p class="footer-text">© 2025 noeshiro</p>
+      <div class="footer-links">
+        <a href="https://twitter.com/noeshiro" target="_blank" rel="noopener noreferrer">Twitter</a>
+      </div>
+    </div>
+  </footer>
+  
   <script src="/script.js"></script>
 </body>
 </html>
