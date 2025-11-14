@@ -139,3 +139,4 @@ document.querySelectorAll('.nav-link').forEach(link => {
     // 通常のリンクはそのまま遷移（e.preventDefault()を呼ばない）
   });
 });
+
