@@ -1,31 +1,134 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="utf-8" />
-  <title>Blog | noeshiro</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link href="/style.css" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Blog - noeshiro</title>
+  <meta name="description" content="ブログ・制作メモ" />
+  <link rel="stylesheet" href="/style.css" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R6W51L5MP1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-R6W51L5MP1');
+  </script>
 </head>
-<body class="theme-light">
+<body>
+  <!-- Header（右上ハンバーガー） -->
   <header class="site-header">
-    <nav class="nav">
-      <a href="/" class="logo">noeshiro</a>
-      <ul class="nav-list">
-        <li><a href="/works/">Works</a></li>
-        <li><a href="/about/">About</a></li>
-        <li><a href="/blog/" aria-current="page">Blog</a></li>
-        <li><a href="/contact/">Contact</a></li>
-      </ul>
-    </nav>
+    <button class="hamburger" id="menuBtn" aria-label="メニューを開く" aria-controls="navPanel" aria-expanded="false">
+      <span class="bar top"></span>
+      <span class="bar mid"></span>
+      <span class="bar bot"></span>
+    </button>
   </header>
-
-  <main class="container narrow">
-    <h1>Blog</h1>
-    <ul class="post-list">
-      <li><a href="/blog/first-post.html">first-post</a> <span class="date">2025-09-01</span></li>
-    </ul>
+  
+  <!-- スライドメニュー -->
+  <nav class="nav-overlay" id="navPanel" aria-hidden="true">
+    <div class="nav-inner">
+      <ul class="nav-menu">
+        <li style="--i:0"><a href="/" class="nav-link">Top</a></li>
+        <li style="--i:1"><a href="/about/" class="nav-link">About</a></li>
+        <li style="--i:2"><a href="/blog/" class="nav-link">Blog</a></li>
+        <li style="--i:3"><a href="/works/" class="nav-link">Works</a></li>
+        <li style="--i:4"><a href="/contact/" class="nav-link">Contact</a></li>
+      </ul>
+    </div>
+    <button class="nav-backdrop" aria-label="メニューを閉じる"></button>
+  </nav>
+  
+  <main>
+    <!-- Page Header -->
+    <section class="page-header reveal">
+      <h1 class="page-title">Blog</h1>
+      <p class="page-description">ブログ・制作メモ</p>
+    </section>
+    
+    <!-- Blog List -->
+    <section class="blog-page-grid reveal">
+      <article class="blog-card">
+        <a href="/blog/first-post.html" class="blog-card-link">
+          <div class="blog-card-content">
+            <time class="blog-date">2025.11.14</time>
+            <h3 class="blog-title">DTM初心者が最初に買うべき機材</h3>
+            <p class="blog-excerpt">作曲を始めるにあたって最初に揃えるべき機材について解説します。オーディオインターフェース、MIDIキーボード、モニターヘッドホンなど、必要最小限の機材を紹介。</p>
+          </div>
+        </a>
+      </article>
+      
+      <article class="blog-card">
+        <a href="#" class="blog-card-link">
+          <div class="blog-card-content">
+            <time class="blog-date">2025.11.10</time>
+            <h3 class="blog-title">コード進行の基礎知識</h3>
+            <p class="blog-excerpt">音楽理論の基本、コード進行について学んだことをまとめました。ダイアトニックコード、カデンツ、定番のコード進行パターンなどを解説。</p>
+          </div>
+        </a>
+      </article>
+      
+      <article class="blog-card">
+        <a href="#" class="blog-card-link">
+          <div class="blog-card-content">
+            <time class="blog-date">2025.11.05</time>
+            <h3 class="blog-title">DAWソフトの選び方</h3>
+            <p class="blog-excerpt">初心者向けのDAWソフトの選び方と比較をまとめました。Logic Pro、Ableton Live、FL Studioなど主要DAWの特徴を紹介。</p>
+          </div>
+        </a>
+      </article>
+      
+      <article class="blog-card">
+        <a href="#" class="blog-card-link">
+          <div class="blog-card-content">
+            <time class="blog-date">2025.11.01</time>
+            <h3 class="blog-title">ミックスの基本テクニック</h3>
+            <p class="blog-excerpt">ミックスの基礎について学んだことをまとめました。EQ、コンプレッサー、リバーブの使い方など、基本的なエフェクトの使い方を解説。</p>
+          </div>
+        </a>
+      </article>
+      
+      <article class="blog-card">
+        <a href="#" class="blog-card-link">
+          <div class="blog-card-content">
+            <time class="blog-date">2025.10.28</time>
+            <h3 class="blog-title">作曲を始めて1ヶ月の振り返り</h3>
+            <p class="blog-excerpt">DTMを始めて1ヶ月が経ちました。これまでに学んだこと、つまずいたポイント、今後の目標などを振り返ります。</p>
+          </div>
+        </a>
+      </article>
+      
+      <article class="blog-card">
+        <a href="#" class="blog-card-link">
+          <div class="blog-card-content">
+            <time class="blog-date">2025.10.20</time>
+            <h3 class="blog-title">おすすめの無料プラグイン10選</h3>
+            <p class="blog-excerpt">DTM初心者におすすめの無料プラグインを厳選して紹介します。音源、エフェクト、ユーティリティなど、ジャンル別にまとめました。</p>
+          </div>
+        </a>
+      </article>
+    </section>
+    
+    <!-- Empty State（記事がまだない場合） -->
+    <!-- <section class="empty-state reveal">
+      <div class="empty-state-content">
+        <h2 class="empty-state-title">記事を準備中です</h2>
+        <p class="empty-state-description">現在、記事を執筆中です。<br>公開までもうしばらくお待ちください。</p>
+      </div>
+    </section> -->
   </main>
-
+  
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p class="footer-text">© 2025 noeshiro</p>
+      <div class="footer-links">
+        <a href="https://twitter.com/noeshiro" target="_blank" rel="noopener noreferrer">Twitter</a>
+      </div>
+    </div>
+  </footer>
+  
   <script src="/script.js"></script>
 </body>
 </html>
+
