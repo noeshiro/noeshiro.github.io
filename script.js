@@ -142,7 +142,7 @@ document.querySelectorAll('.nav-link').forEach(link => {
 
 
 // ===== YouTube動画の動的取得（トップページ・Worksページ共通） =====
-const YOUTUBE_CHANNEL_ID = 'YOUR_CHANNEL_ID'; // ← チャンネルIDを入れる
+const YOUTUBE_CHANNEL_ID = 'UCfB7sdc575zWmz60Xe15hCw';
 
 async function loadYouTubeVideos(containerId, limit) {
   const container = document.getElementById(containerId);
