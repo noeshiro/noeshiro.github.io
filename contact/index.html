@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Works - noeshiro</title>
-  <meta name="description" content="制作実績・作品一覧" />
+  <title>Contact - noeshiro</title>
+  <meta name="description" content="お問い合わせ" />
   <link rel="icon" href="/favicon.png" type="image/png" />
   <meta property="og:image" content="https://www.noeshiro.com/images/og.jpg" />
   <link rel="stylesheet" href="/style.css" />
@@ -18,7 +18,7 @@
   </script>
 </head>
 <body>
-  <!-- Header（右上ハンバーガー） -->
+  <!-- Header -->
   <header class="site-header">
     <button class="hamburger" id="menuBtn" aria-label="メニューを開く" aria-controls="navPanel" aria-expanded="false">
       <span class="bar top"></span>
@@ -26,7 +26,7 @@
       <span class="bar bot"></span>
     </button>
   </header>
-  
+
   <!-- スライドメニュー -->
   <nav class="nav-overlay" id="navPanel" aria-hidden="true">
     <div class="nav-inner">
@@ -40,93 +40,38 @@
     </div>
     <button class="nav-backdrop" aria-label="メニューを閉じる"></button>
   </nav>
-  
+
   <main>
-    <!-- Page Header -->
     <section class="page-header reveal">
-      <h1 class="page-title">Works</h1>
-      <p class="page-description">制作実績・作品一覧</p>
+      <h1 class="page-title">Contact</h1>
+      <p class="page-description">現在、お問い合わせは受け付けておりません</p>
     </section>
-    
-    <!-- Works Grid -->
-    <section class="works-page-grid reveal">
-      <article class="tile">
-        <a class="thumb" href="#">
-          <img src="/images/work-a.jpg" alt="作品タイトルA">
-        </a>
-        <div class="tile-content">
-          <h3 class="tile-title">作品タイトルA</h3>
-          <p class="tile-meta">2025/08 • Music Production</p>
-          <p class="tile-description">作品の説明がここに入ります。どのような作品なのか、制作の背景などを簡潔に記載します。</p>
+
+    <section class="reveal" style="max-width:600px;margin:0 auto;padding:0 var(--spacing-md) var(--spacing-xl);">
+      <form onsubmit="return false;">
+        <div style="margin-bottom:var(--spacing-md);">
+          <label style="display:block;font-size:.875rem;color:var(--muted);margin-bottom:6px;">お名前</label>
+          <input type="text" disabled placeholder="現在受付停止中"
+            style="width:100%;padding:12px 14px;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--bg);color:var(--muted);font-size:1rem;cursor:not-allowed;box-sizing:border-box;">
         </div>
-      </article>
-      
-      <article class="tile">
-        <a class="thumb" href="#">
-          <img src="/images/work-b.jpg" alt="作品タイトルB">
-        </a>
-        <div class="tile-content">
-          <h3 class="tile-title">作品タイトルB</h3>
-          <p class="tile-meta">2025/07 • Sound Design</p>
-          <p class="tile-description">作品の説明がここに入ります。どのような作品なのか、制作の背景などを簡潔に記載します。</p>
+        <div style="margin-bottom:var(--spacing-md);">
+          <label style="display:block;font-size:.875rem;color:var(--muted);margin-bottom:6px;">メールアドレス</label>
+          <input type="email" disabled placeholder="現在受付停止中"
+            style="width:100%;padding:12px 14px;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--bg);color:var(--muted);font-size:1rem;cursor:not-allowed;box-sizing:border-box;">
         </div>
-      </article>
-      
-      <article class="tile">
-        <a class="thumb" href="#">
-          <img src="/images/work-c.jpg" alt="作品タイトルC">
-        </a>
-        <div class="tile-content">
-          <h3 class="tile-title">作品タイトルC</h3>
-          <p class="tile-meta">2025/06 • Composition</p>
-          <p class="tile-description">作品の説明がここに入ります。どのような作品なのか、制作の背景などを簡潔に記載します。</p>
+        <div style="margin-bottom:var(--spacing-md);">
+          <label style="display:block;font-size:.875rem;color:var(--muted);margin-bottom:6px;">メッセージ</label>
+          <textarea disabled placeholder="現在受付停止中" rows="6"
+            style="width:100%;padding:12px 14px;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--bg);color:var(--muted);font-size:1rem;cursor:not-allowed;resize:none;box-sizing:border-box;"></textarea>
         </div>
-      </article>
-      
-      <article class="tile">
-        <a class="thumb" href="#">
-          <img src="/images/work-d.jpg" alt="作品タイトルD">
-        </a>
-        <div class="tile-content">
-          <h3 class="tile-title">作品タイトルD</h3>
-          <p class="tile-meta">2025/05 • Music Production</p>
-          <p class="tile-description">作品の説明がここに入ります。どのような作品なのか、制作の背景などを簡潔に記載します。</p>
-        </div>
-      </article>
-      
-      <article class="tile">
-        <a class="thumb" href="#">
-          <img src="/images/work-e.jpg" alt="作品タイトルE">
-        </a>
-        <div class="tile-content">
-          <h3 class="tile-title">作品タイトルE</h3>
-          <p class="tile-meta">2025/04 • Sound Design</p>
-          <p class="tile-description">作品の説明がここに入ります。どのような作品なのか、制作の背景などを簡潔に記載します。</p>
-        </div>
-      </article>
-      
-      <article class="tile">
-        <a class="thumb" href="#">
-          <img src="/images/work-f.jpg" alt="作品タイトルF">
-        </a>
-        <div class="tile-content">
-          <h3 class="tile-title">作品タイトルF</h3>
-          <p class="tile-meta">2025/03 • Composition</p>
-          <p class="tile-description">作品の説明がここに入ります。どのような作品なのか、制作の背景などを簡潔に記載します。</p>
-        </div>
-      </article>
+        <button type="submit" disabled
+          style="width:100%;padding:14px;background:var(--border);color:var(--muted);border:none;border-radius:var(--radius-sm);font-size:1rem;cursor:not-allowed;">
+          送信（現在停止中）
+        </button>
+      </form>
     </section>
-    
-    <!-- Empty State（作品がまだない場合） -->
-    <!-- <section class="empty-state reveal">
-      <div class="empty-state-content">
-        <h2 class="empty-state-title">作品を準備中です</h2>
-        <p class="empty-state-description">現在、掲載する作品を制作中です。<br>公開までもうしばらくお待ちください。</p>
-      </div>
-    </section> -->
   </main>
-  
-  <!-- Footer -->
+
   <footer class="site-footer">
     <div class="footer-content">
       <p class="footer-text">© 2025 noeshiro</p>
@@ -135,9 +80,7 @@
       </div>
     </div>
   </footer>
-  
+
   <script src="/script.js"></script>
 </body>
 </html>
-
-
