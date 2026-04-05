@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>UTM Builder - noeshiro</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="stylesheet" href="/style.css" />
+  <style>
+    .utm-wrap {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: var(--spacing-lg) var(--spacing-md) var(--spacing-xl);
+    }
+    .utm-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: var(--spacing-lg);
+    }
+    .field {
+      margin-bottom: var(--spacing-md);
+    }
+    .field label {
+      display: block;
+      font-size: .875rem;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .field input,
+    .field select {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: var(--card);
+      color: var(--ink);
+      font-size: 1rem;
+      box-sizing: border-box;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .field input:focus,
+    .field select:focus {
+      border-color: var(--accent);
+    }
+    .result-box {
+      margin-top: var(--spacing-lg);
+      padding: var(--spacing-md);
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+    }
+    .result-label {
+      font-size: .8rem;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .result-url {
+      font-size: .9rem;
+      word-break: break-all;
+      color: var(--ink);
+      margin-bottom: var(--spacing-md);
+      min-height: 1.4em;
+    }
+    .copy-btn {
+      padding: 10px 24px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius-sm);
+      font-size: .9rem;
+      cursor: pointer;
+      transition: opacity .15s;
+    }
+    .copy-btn:hover { opacity: .85; }
+    .copy-btn.copied {
+      background: #22c55e;
+    }
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: var(--spacing-lg) 0;
+    }
+    .history-title {
+      font-size: .875rem;
+      font-weight: 600;
+      margin-bottom: var(--spacing-sm);
+    }
+    .history-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .history-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: .8rem;
+      color: var(--muted);
+      word-break: break-all;
+    }
+    .history-copy {
+      flex-shrink: 0;
+      padding: 4px 10px;
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-size: .75rem;
+      cursor: pointer;
+      color: var(--ink);
+    }
+    .history-copy:hover { background: var(--border); }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="utm-wrap">
+      <p style="font-size:.8rem;color:var(--muted);margin-bottom:var(--spacing-sm);">
+        <a href="/" style="color:var(--muted);">← サイトトップ</a>
+      </p>
+      <h1 class="utm-title">UTM Builder</h1>
+
+      <div class="field">
+        <label>媒体</label>
+        <select id="source">
+          <option value="youtube"   data-medium="video">YouTube</option>
+          <option value="nicovideo" data-medium="video">ニコニコ</option>
+          <option value="note"      data-medium="article">note</option>
+          <option value="x"         data-medium="social">X</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>コンテンツ名（動画タイトル・記事タイトルなど）</label>
+        <input type="text" id="campaign" placeholder="例：はじめてのDTM" />
+      </div>
+
+      <div class="field">
+        <label>飛ばし先ページ（省略するとトップ）</label>
+        <select id="page">
+          <option value="">トップ（/）</option>
+          <option value="works">Works（/works/）</option>
+          <option value="blog">Blog（/blog/）</option>
+          <option value="about">About（/about/）</option>
+          <option value="contact">Contact（/contact/）</option>
+        </select>
+      </div>
+
+      <div class="result-box">
+        <p class="result-label">生成されたURL</p>
+        <p class="result-url" id="output">—</p>
+        <button class="copy-btn" id="copyBtn" onclick="copyUrl()">コピー</button>
+      </div>
+
+      <hr class="divider" />
+
+      <p class="history-title">履歴</p>
+      <ul class="history-list" id="historyList">
+        <li style="font-size:.8rem;color:var(--muted);">まだ履歴がありません</li>
+      </ul>
+    </div>
+  </main>
+
+  <script>
+    const BASE = 'https://www.noeshiro.com';
+    const PAGES = { '': '/', works: '/works/', blog: '/blog/', about: '/about/', contact: '/contact/' };
+
+    function build() {
+      const sourceEl = document.getElementById('source');
+      const source   = sourceEl.value;
+      const medium   = sourceEl.options[sourceEl.selectedIndex].dataset.medium;
+      const campaign = document.getElementById('campaign').value.trim();
+      const page     = document.getElementById('page').value;
+
+      if (!campaign) { document.getElementById('output').textContent = '—'; return; }
+
+      const path = PAGES[page];
+      const params = new URLSearchParams({
+        utm_source:   source,
+        utm_medium:   medium,
+        utm_campaign: campaign,
+      });
+      const url = `${BASE}${path}?${params.toString()}`;
+      document.getElementById('output').textContent = url;
+    }
+
+    ['source', 'campaign', 'page'].forEach(id =>
+      document.getElementById(id).addEventListener('input', build)
+    );
+
+    function copyUrl() {
+      const url = document.getElementById('output').textContent;
+      if (url === '—') return;
+      navigator.clipboard.writeText(url).then(() => {
+        const btn = document.getElementById('copyBtn');
+        btn.textContent = 'コピーしました！';
+        btn.classList.add('copied');
+        setTimeout(() => { btn.textContent = 'コピー'; btn.classList.remove('copied'); }, 2000);
+        addHistory(url);
+      });
+    }
+
+    function addHistory(url) {
+      const list = document.getElementById('historyList');
+      if (list.children.length === 1 && list.children[0].tagName === 'LI' && !list.children[0].querySelector('button')) {
+        list.innerHTML = '';
+      }
+      const li = document.createElement('li');
+      li.className = 'history-item';
+      li.innerHTML = `<span style="flex:1">${url}</span><button class="history-copy" onclick="navigator.clipboard.writeText('${url}')">コピー</button>`;
+      list.prepend(li);
+    }
+  </script>
+</body>
+</html>
