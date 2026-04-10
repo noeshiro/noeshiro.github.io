@@ -189,7 +189,7 @@ async function loadNoteArticles(containerId, limit) {
   const container = document.getElementById(containerId);
   if (!container) return;
   try {
-    const res = await fetch('https://note.com/api/v2/creators/noeshiro/contents?kind=note&page=1');
+    const res = await fetch('/blog/notes.json');
     if (!res.ok) throw new Error();
     const json = await res.json();
     const items = (json.data?.contents ?? []).slice(0, limit);
