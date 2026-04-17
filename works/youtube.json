@@ -1,0 +1,45 @@
+{
+  "kind": "youtube#searchListResponse",
+  "etag": "CkiGmjWyczbKe5H36RXSNKJiCQQ",
+  "regionCode": "US",
+  "pageInfo": {
+    "totalResults": 1,
+    "resultsPerPage": 1
+  },
+  "items": [
+    {
+      "kind": "youtube#searchResult",
+      "etag": "lRSO2ywmMXo_g-a8hUxgxL7zgsU",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "7PBYU9Mqkzc"
+      },
+      "snippet": {
+        "publishedAt": "2026-04-05T11:27:42Z",
+        "channelId": "UCfB7sdc575zWmz60Xe15hCw",
+        "title": "誰もいない朝にサイレンを鳴らして/初音ミク",
+        "description": "初めて曲を作りました...! ぜひ、聞いていただけるとうれしいです...! 誰もいない朝にサイレンを鳴らして ◇ Music / のえしろ ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/7PBYU9Mqkzc/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/7PBYU9Mqkzc/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/7PBYU9Mqkzc/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "のえしろ",
+        "liveBroadcastContent": "none",
+        "publishTime": "2026-04-05T11:27:42Z"
+      }
+    }
+  ]
+}
