@@ -84,12 +84,13 @@
             ? new Date(item.publishAt).toLocaleDateString('ja-JP', { year: 'numeric', month: '2-digit', day: '2-digit' }).replace(/\//g, '.')
             : '';
           const url = item.noteUrl ?? `https://note.com/noeshiro/n/${item.key}`;
+          const isExternal = url.startsWith('http');
           const title = item.name ?? '';
           const excerpt = item.body ? item.body.replace(/<[^>]*>/g, '').slice(0, 80) + '…' : '';
 
           return `
             <article class="blog-card">
-              <a href="${url}" target="_blank" rel="noopener noreferrer" class="blog-card-link">
+              <a href="${url}"${isExternal ? ' target="_blank" rel="noopener noreferrer"' : ''} class="blog-card-link">
                 <div class="blog-card-content">
                   <time class="blog-date">${date}</time>
                   <h3 class="blog-title">${title}</h3>
