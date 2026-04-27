@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>朝タスク自動生成ルーチン セットアップガイド — noeshiro</title>
+  <meta name="description" content="Claude Code Routines を使って、毎朝6:00にNotionタスクDBへ今日のタスクを自動投入するセットアップガイド" />
+  <link rel="icon" href="/favicon.png" type="image/png" />
+  <meta property="og:image" content="https://www.noeshiro.com/images/og.jpg" />
+  <link rel="stylesheet" href="/style.css" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z8YSMGXTK0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Z8YSMGXTK0');
+  </script>
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <button class="hamburger" id="menuBtn" aria-label="メニューを開く" aria-controls="navPanel" aria-expanded="false">
+      <span class="bar top"></span>
+      <span class="bar mid"></span>
+      <span class="bar bot"></span>
+    </button>
+  </header>
+
+  <!-- スライドメニュー -->
+  <nav class="nav-overlay" id="navPanel" aria-hidden="true">
+    <div class="nav-inner">
+      <ul class="nav-menu">
+        <li style="--i:0"><a href="/" class="nav-link">Top</a></li>
+        <li style="--i:1"><a href="/about/" class="nav-link">About</a></li>
+        <li style="--i:2"><a href="/blog/" class="nav-link">Blog</a></li>
+        <li style="--i:3"><a href="/works/" class="nav-link">Works</a></li>
+        <li style="--i:4"><a href="/contact/" class="nav-link">Contact</a></li>
+      </ul>
+    </div>
+    <button class="nav-backdrop" aria-label="メニューを閉じる"></button>
+  </nav>
+
+  <main>
+    <article class="article-page reveal">
+      <header class="article-header">
+        <p class="article-back"><a href="/blog/">&larr; Blog</a></p>
+        <h1 class="article-title">朝タスク自動生成ルーチン — セットアップガイド</h1>
+        <time class="article-date" datetime="2026-04-27">2026.04.27</time>
+      </header>
+
+      <div class="article-body">
+        <p>Claude Code Routines を使って、毎朝6:00にNotionタスクDBへ今日のタスクを自動投入する。朝Notionを開くだけで「今日やること」が揃っている状態を作る。</p>
+
+        <h2>ルーチンが毎朝やること（3ステップ）</h2>
+
+        <h3>Step 1: 繰り越しタスク検出</h3>
+        <ul>
+          <li><strong>対象</strong>: 優先度「本日中」かつステータス「未着手」のタスク</li>
+          <li><strong>処理</strong>: 今日の日付で同じ内容のタスクを新規作成</li>
+          <li><strong>入れ子構造</strong>: 元タスクと同じ親ページの下にぶら下げる</li>
+          <li><strong>引き継ぎ</strong>: タスク名、テーマ、内容をそのままコピー</li>
+        </ul>
+
+        <h3>Step 2: 週1定常タスク</h3>
+        <ul>
+          <li><strong>曜日</strong>: 月曜日</li>
+          <li><strong>タスク</strong>: 「note記事執筆」</li>
+          <li><strong>設定値</strong>: テーマ <code>["創作"]</code> / 優先度 <code>１週間以内</code></li>
+          <li><strong>配置</strong>: 「創作」親ページの下にぶら下げる</li>
+        </ul>
+
+        <h3>Step 3: マイルストーン分解</h3>
+        <ul>
+          <li><strong>対象</strong>: マイルストーンDBから期限が今日〜1ヶ月以内のもの</li>
+          <li><strong>処理</strong>: マイルストーンの内容を読み取り、具体的な作業タスクに分解して投入</li>
+          <li><strong>優先度の自動判定</strong>:
+            <ul>
+              <li>期限まで7日以内 → <code>本日中</code></li>
+              <li>期限まで14日以内 → <code>１週間以内</code></li>
+              <li>期限まで30日以内 → <code>優先度低</code></li>
+            </ul>
+          </li>
+          <li><strong>配置</strong>: マイルストーンのテーマに対応する既存の親ページの下にぶら下げる</li>
+          <li><strong>重複防止</strong>: 同じマイルストーンから生成済みのタスクがあればスキップ</li>
+        </ul>
+
+        <h2>Notion DB 情報</h2>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>DB</th><th>data_source_id</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>タスク管理DB</td><td><code>30f55192-729f-80d6-b174-000b89cd078d</code></td></tr>
+              <tr><td>マイルストーンDB</td><td><code>c3873932-5536-49f6-8bce-d87fad3a7adb</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>タスク管理DBのフィールド</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>フィールド</th><th>値の例</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>タスク名</td><td><code>シカゴ→トロントとる</code></td></tr>
+              <tr><td>内容</td><td>（テキスト）</td></tr>
+              <tr><td>ステータス</td><td><code>未着手</code> / <code>完了</code></td></tr>
+              <tr><td>優先度</td><td><code>本日中</code> / <code>１週間以内</code> / <code>優先度低</code></td></tr>
+              <tr><td>期限</td><td><code>2026年4月13日</code></td></tr>
+              <tr><td>テーマ</td><td><code>'["創作"]'</code> / <code>'["その他"]'</code> など（JSON配列文字列）</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>入れ子構造（実例）</h3>
+        <pre><code>その他
+  └ ワールドカップ
+      ├ シカゴ→トロントとる
+      ├ ダラス→シアトルとる
+      └ チケットとったこと連絡
+創作
+  └ 耳コピ
+      ├ ドラム Aメロ
+      ├ メロディ合わせる aメロ
+      └ ベース最後のフィル合わせ…</code></pre>
+
+        <h2>セットアップ手順</h2>
+
+        <h3>前提条件</h3>
+        <ul>
+          <li>Claude Pro / Max / Team / Enterprise プラン</li>
+          <li>Claude Code on the web が有効</li>
+          <li>Notion MCP コネクターが接続済み</li>
+        </ul>
+
+        <h3>1. Routines画面を開く</h3>
+        <p><code>https://claude.ai/code/routines</code> にアクセス → 「New routine」をクリック</p>
+
+        <h3>2. ルーチン設定</h3>
+
+        <h4>Name（名前）</h4>
+        <pre><code>朝タスク自動生成</code></pre>
+
+        <h4>Prompt（プロンプト）</h4>
+        <pre><code>あなたは毎朝実行されるタスク管理アシスタントです。
+Notion MCP コネクターを使って、以下の3つの処理を順番に実行してください。
+
+## 処理1: 繰り越しタスク検出
+
+タスク管理DB（data_source_id: 30f55192-729f-80d6-b174-000b89cd078d）を検索し、
+以下の条件に合うタスクを見つけてください：
+- ステータスが「未着手」
+- 優先度が「本日中」
+- 期限が今日より前（期限フィールドが空のものは対象外）
+
+見つかった各タスクについて：
+1. 同じ親ページの下に新しいタスクを作成
+2. タスク名・内容・テーマをそのままコピー
+3. 優先度を「本日中」、期限を今日の日付に設定
+4. ステータスを「未着手」に設定
+
+## 処理2: 週1定常タスク
+
+今日が月曜日の場合のみ実行：
+- 「創作」カテゴリの親ページを検索
+- その下に以下のタスクを作成：
+  - タスク名: 「note記事執筆」
+  - テーマ: ["創作"]
+  - 優先度: 「１週間以内」
+  - ステータス: 「未着手」
+
+月曜日でなければこの処理はスキップ。
+
+## 処理3: マイルストーン分解
+
+マイルストーンDB（data_source_id: c3873932-5536-49f6-8bce-d87fad3a7adb）を検索し、
+期限が今日から30日以内のマイルストーンを取得。
+
+各マイルストーンについて：
+1. 内容を読み取り、具体的な作業タスク（2〜5個程度）に分解
+2. 優先度を期限から自動判定：
+   - 期限まで7日以内 → 「本日中」
+   - 期限まで14日以内 → 「１週間以内」
+   - 期限まで30日以内 → 「優先度低」
+3. タスク管理DBの対応するテーマの親ページの下にタスクを作成
+4. 既に同じタスク名が存在する場合はスキップ（重複防止）
+
+## 実行後の出力
+
+処理結果をまとめて報告してください：
+- 繰り越したタスク数と内容
+- 週1タスクの作成有無
+- マイルストーンから分解・作成したタスク数と内容
+- スキップした項目（重複など）</code></pre>
+
+        <h3>3. リポジトリ</h3>
+        <p>リポジトリは不要（Notionコネクター経由のみで動作）。リポジトリ選択は空のままでOK。</p>
+
+        <h3>4. トリガー設定</h3>
+        <ul>
+          <li>「Add trigger」→「Schedule」を選択</li>
+          <li>頻度: <strong>Daily</strong></li>
+          <li>時刻: <strong>6:00 AM</strong>（JST）</li>
+        </ul>
+
+        <h3>5. コネクター</h3>
+        <ul>
+          <li><strong>Notion</strong> が含まれていることを確認</li>
+          <li>不要なコネクター（Gmail、Google Drive等）は外してOK</li>
+        </ul>
+
+        <h3>6. 「Create」をクリック</h3>
+
+        <h2>動作確認</h2>
+        <ol>
+          <li>ルーチン詳細ページで「Run now」をクリックして手動実行</li>
+          <li>セッションが開くので、実行内容を確認</li>
+          <li>Notionのタスク管理DBを開いて、タスクが正しく作成されているか確認</li>
+        </ol>
+
+        <h3>チェックポイント</h3>
+        <ul class="checklist">
+          <li>繰り越しタスクが今日の日付で作成されている</li>
+          <li>入れ子構造（親ページ）が正しく維持されている</li>
+          <li>月曜日に「note記事執筆」が作成される</li>
+          <li>マイルストーンから分解されたタスクの優先度が正しい</li>
+          <li>重複タスクが作成されていない</li>
+        </ul>
+
+        <h2>カスタマイズメモ</h2>
+
+        <h3>週1タスクを追加したい場合</h3>
+        <p>プロンプトの「処理2」に曜日とタスク内容を追記する。</p>
+        <p>例: 水曜日に「耳コピ進捗確認」を追加</p>
+        <pre><code>今日が水曜日の場合：
+- 「創作」カテゴリ → 「耳コピ」の下に
+- タスク名: 「耳コピ進捗確認」
+- 優先度: 「１週間以内」</code></pre>
+
+        <h3>実行時刻を変えたい場合</h3>
+        <p>Routines画面 → ルーチンを編集 → トリガーの時刻を変更</p>
+
+        <h3>日常タスクを追加したい場合</h3>
+        <p>プロンプトに「処理4」として追記すればOK。例: 毎日「家計簿つける」を入れる、など。</p>
+      </div>
+    </article>
+
+    <p class="article-back-bottom"><a href="/blog/">&larr; back to list</a></p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p class="footer-text">&copy; 2026 noeshiro</p>
+      <div class="footer-links">
+        <a href="https://x.com/noeshiro" target="_blank" rel="noopener noreferrer">X</a>
+        <a href="https://note.com/noeshiro" target="_blank" rel="noopener noreferrer">note</a>
+        <a href="https://www.youtube.com/@noeshiro" target="_blank" rel="noopener noreferrer">YouTube</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/script.js"></script>
+</body>
+</html>

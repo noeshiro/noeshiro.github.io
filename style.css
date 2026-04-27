@@ -1031,6 +1031,180 @@ section {
   line-height: 1.7;
 }
 
+/* ===== Article Page ===== */
+.article-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding-bottom: var(--spacing-xl);
+}
+
+.article-header {
+  margin-bottom: var(--spacing-lg);
+}
+
+.article-back {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: var(--spacing-md);
+}
+
+.article-back a {
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.article-back a:hover {
+  color: var(--ink);
+  opacity: 1;
+}
+
+.article-title {
+  font-size: clamp(24px, 5vw, 36px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--spacing-xs);
+  line-height: 1.4;
+}
+
+.article-date {
+  display: block;
+  font-size: 14px;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.article-body h2 {
+  font-size: clamp(20px, 3.5vw, 26px);
+  font-weight: 600;
+  margin-top: var(--spacing-xl);
+  margin-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-xs);
+  border-bottom: 1px solid var(--border);
+}
+
+.article-body h3 {
+  font-size: clamp(17px, 3vw, 21px);
+  font-weight: 600;
+  margin-top: var(--spacing-lg);
+  margin-bottom: var(--spacing-sm);
+}
+
+.article-body h4 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: var(--spacing-md);
+  margin-bottom: var(--spacing-xs);
+}
+
+.article-body p {
+  line-height: 1.8;
+  margin-bottom: var(--spacing-sm);
+}
+
+.article-body ul,
+.article-body ol {
+  padding-left: 1.5em;
+  margin-bottom: var(--spacing-sm);
+  line-height: 1.8;
+}
+
+.article-body li {
+  margin-bottom: 6px;
+}
+
+.article-body li ul {
+  margin-top: 6px;
+  margin-bottom: 0;
+}
+
+.article-body code {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-size: 0.9em;
+  font-family: "SF Mono", "Fira Code", "Fira Mono", "Roboto Mono", monospace;
+}
+
+.article-body pre {
+  background: #1a1a1a;
+  color: #e5e5e5;
+  border-radius: var(--radius-sm);
+  padding: var(--spacing-md);
+  overflow-x: auto;
+  margin-bottom: var(--spacing-md);
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+.article-body pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  color: inherit;
+  font-size: inherit;
+}
+
+.article-body strong {
+  font-weight: 600;
+}
+
+.table-wrap {
+  overflow-x: auto;
+  margin-bottom: var(--spacing-md);
+}
+
+.article-body table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.article-body th,
+.article-body td {
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  text-align: left;
+}
+
+.article-body th {
+  background: var(--bg);
+  font-weight: 600;
+}
+
+.checklist {
+  list-style: none;
+  padding-left: 0;
+}
+
+.checklist li {
+  position: relative;
+  padding-left: 1.8em;
+}
+
+.checklist li::before {
+  content: "☐";
+  position: absolute;
+  left: 0;
+}
+
+.article-back-bottom {
+  text-align: center;
+  padding: var(--spacing-lg) 0;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.article-back-bottom a {
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.article-back-bottom a:hover {
+  color: var(--ink);
+  opacity: 1;
+}
+
 /* ===== Empty State ===== */
 .empty-state {
   text-align: center;
