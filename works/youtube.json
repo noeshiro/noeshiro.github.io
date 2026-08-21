@@ -1,12 +1,46 @@
 {
   "kind": "youtube#searchListResponse",
-  "etag": "2sNa6dBQz-VceKZtL_Y5tq9EJQo",
+  "etag": "WPRWmsyGndAbNLwzkfHdb5hZbwY",
   "regionCode": "US",
   "pageInfo": {
-    "totalResults": 1,
-    "resultsPerPage": 1
+    "totalResults": 2,
+    "resultsPerPage": 2
   },
   "items": [
+    {
+      "kind": "youtube#searchResult",
+      "etag": "9oEnADpFa4xACP48_HNnUIoV4bw",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "geLU9MTd57U"
+      },
+      "snippet": {
+        "publishedAt": "2026-08-20T11:30:28Z",
+        "channelId": "UCfB7sdc575zWmz60Xe15hCw",
+        "title": "君じゃなくても / feat.初音ミク",
+        "description": "ボカコレ2026夏ルーキー参加曲です。 ▽ニコニコ動画 https://www.nicovideo.jp/watch/sm46692664 ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/geLU9MTd57U/default_live.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/geLU9MTd57U/mqdefault_live.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/geLU9MTd57U/hqdefault_live.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "のえしろ",
+        "liveBroadcastContent": "upcoming",
+        "publishTime": "2026-08-20T11:30:28Z"
+      }
+    },
     {
       "kind": "youtube#searchResult",
       "etag": "D4faXVaSU1aa_P4fDZvSH7jB6oM",
