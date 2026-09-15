@@ -1,6 +1,6 @@
 {
   "kind": "youtube#searchListResponse",
-  "etag": "C3BpgJtGvBYlSKx0_0NclVhT_wc",
+  "etag": "eepAxicqR6z2yt2XrtQ1pMSjwio",
   "regionCode": "US",
   "pageInfo": {
     "totalResults": 3,
@@ -9,7 +9,7 @@
   "items": [
     {
       "kind": "youtube#searchResult",
-      "etag": "K_ZjW6aGTSgMQtbGhPvqUr6r1u8",
+      "etag": "fMKxHeZ8qGjCnoT1luSCOfA_bPU",
       "id": {
         "kind": "youtube#video",
         "videoId": "MmkCKa8a_n0"
@@ -34,6 +34,16 @@
             "url": "https://i.ytimg.com/vi/MmkCKa8a_n0/hqdefault.jpg",
             "width": 480,
             "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/MmkCKa8a_n0/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/MmkCKa8a_n0/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
           }
         },
         "channelTitle": "のえしろ",
@@ -43,7 +53,7 @@
     },
     {
       "kind": "youtube#searchResult",
-      "etag": "Stt2kr73VYOyFJCC9jdSoTuUnZg",
+      "etag": "lKqdQCWWnwB7b3rwXZbrtpTtm_4",
       "id": {
         "kind": "youtube#video",
         "videoId": "geLU9MTd57U"
@@ -68,6 +78,21 @@
             "url": "https://i.ytimg.com/vi/geLU9MTd57U/hqdefault.jpg",
             "width": 480,
             "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/geLU9MTd57U/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/geLU9MTd57U/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          },
+          "uhd": {
+            "url": "https://i.ytimg.com/vi/geLU9MTd57U/uhddefault.jpg",
+            "width": 3840,
+            "height": 2160
           }
         },
         "channelTitle": "のえしろ",
@@ -77,7 +102,7 @@
     },
     {
       "kind": "youtube#searchResult",
-      "etag": "2EOS5xBjtTBa-2kguQBTNK60fFA",
+      "etag": "9PPdK1DLD0SwtE8BImZjpn_hLe0",
       "id": {
         "kind": "youtube#video",
         "videoId": "7PBYU9Mqkzc"
@@ -102,6 +127,21 @@
             "url": "https://i.ytimg.com/vi/7PBYU9Mqkzc/hqdefault.jpg",
             "width": 480,
             "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/7PBYU9Mqkzc/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/7PBYU9Mqkzc/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          },
+          "qhd": {
+            "url": "https://i.ytimg.com/vi/7PBYU9Mqkzc/qhddefault.jpg",
+            "width": 2560,
+            "height": 1440
           }
         },
         "channelTitle": "のえしろ",
